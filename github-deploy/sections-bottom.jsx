@@ -235,19 +235,21 @@ function Founder() {
           <Reveal>
             <div style={{
               aspectRatio: '4 / 5', borderRadius: 20,
+              background: 'linear-gradient(135deg, #14171D 0%, #1d2128 50%, #0c0f14 100%)',
               border: '1px solid var(--line-2)', position: 'relative', overflow: 'hidden',
             }}>
-              <img src="uploads/pasted-1777447567637-0.png" alt="Founder" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(120px, 18vw, 220px)', fontWeight: 500, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.06)' }}>M31</div>
+              <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--ink-4)', letterSpacing: '0.1em' }}>
                 <span>FOUNDER</span><span>MARKETING31</span>
               </div>
               <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                 <div>
-                  <div style={{ fontSize: 20, fontWeight: 500, letterSpacing: '-0.02em', color: 'white', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Mateo</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 4, textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Founder, Marketing31</div>
+                  <div style={{ fontSize: 20, fontWeight: 500, letterSpacing: '-0.02em' }}>Your Name</div>
+                  <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 4 }}>Founder, Marketing31</div>
                 </div>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--accent)', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>● ONLINE</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--accent)' }}>● ONLINE</span>
               </div>
+              <div style={{ position: 'absolute', bottom: -100, right: -100, width: 300, height: 300, background: 'radial-gradient(circle, rgba(74,158,255,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
             </div>
           </Reveal>
           <Reveal delay={120}>
