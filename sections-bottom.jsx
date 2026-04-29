@@ -443,8 +443,8 @@ function FinalCTA() {
                 your ad spend gets liquidated on day one. No pitch deck. Just the math.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 40, flexWrap: 'wrap' }}>
-                <a href="#" className="btn btn-primary">Book a strategy call <Arrow /></a>
-                <a href="#" className="btn btn-ghost">See the Evolve case study</a>
+                <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a strategy call <Arrow /></a>
+                <a href="#cases" className="btn btn-ghost">See the Evolve case study</a>
               </div>
               <div style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-3)', display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
                 <span>Free 30-min call</span>

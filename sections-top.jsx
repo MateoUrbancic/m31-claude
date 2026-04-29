@@ -18,7 +18,7 @@ function Nav({ accent }) {
           <a href="#fit">Is This For Me?</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a href="#cta" className="btn btn-primary btn-sm nav-cta">
+        <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm nav-cta">
           Book a call <Arrow size={14} />
         </a>
       </div>
@@ -54,7 +54,7 @@ function Hero({ headline }) {
         </Reveal>
 
         <Reveal delay={240} style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
-          <a href="#cta" className="btn btn-primary">Book a strategy call <Arrow /></a>
+          <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a strategy call <Arrow /></a>
           <a href="#cases" className="btn btn-ghost">See client results</a>
         </Reveal>
 
