@@ -49,7 +49,7 @@ function Hero({ headline }) {
             textAlign: 'center', maxWidth: 640, margin: '32px auto 0',
             fontSize: 'clamp(16px, 1.4vw, 19px)', color: 'var(--ink-2)', lineHeight: 1.55
           }}>
-            We build done-for-you low-ticket ascension funnels for coaches &amp; other B2B service businesses doing $30K+ per month — so you can liquidate your Meta Ads on day one and turn low-ticket buyers into high-ticket clients at close to 100% profit.
+            Done-for-you low-ticket funnels that allow you to get new customers &amp; clients with Meta ads while immediately breaking even on your ad spend—the same day with the low-ticket sales.
           </p>
         </Reveal>
 
