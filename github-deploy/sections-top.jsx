@@ -18,7 +18,7 @@ function Nav({ accent }) {
           <a href="#fit">Is This For Me?</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm nav-cta">
+        <a href="#cta" className="btn btn-primary btn-sm nav-cta">
           Book a call <Arrow size={14} />
         </a>
       </div>
@@ -27,15 +27,18 @@ function Nav({ accent }) {
 }
 
 function Hero({ headline }) {
+  const [playing, setPlaying] = useState(false);
   return (
     <section id="top" style={{ paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
       <div className="glow" style={{ width: 720, height: 720, top: -200, left: '50%', transform: 'translateX(-50%)', opacity: 0.16 }} />
 
       <div className="container" style={{ position: 'relative' }}>
-
+        <Reveal style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
+          <span className="eyebrow"><span className="dot" />Done-for-you · Meta Ads · Coaches &amp; Consultants</span>
+        </Reveal>
 
         <Reveal delay={80}>
-          <h1 style={{ textAlign: 'center', maxWidth: '22ch', margin: '0 auto', fontSize: 'clamp(42px, 6.5vw, 80px)', lineHeight: 1.15 }}>
+          <h1 style={{ textAlign: 'center', maxWidth: '17ch', margin: '0 auto' }}>
             {headline.split('|').map((part, i) =>
               i === 1
                 ? <span key={i} className="italic-disp" style={{ color: 'var(--accent)' }}>{part}</span>
@@ -49,12 +52,14 @@ function Hero({ headline }) {
             textAlign: 'center', maxWidth: 640, margin: '32px auto 0',
             fontSize: 'clamp(16px, 1.4vw, 19px)', color: 'var(--ink-2)', lineHeight: 1.55
           }}>
-            Done-for-you low-ticket funnels that allow you to get new customers &amp; clients with Meta ads while immediately breaking even on your ad spend—the same day with the low-ticket sales.
+            We build done-for-you low-ticket ascension funnels for coaches and consultants
+            doing $30K–$100K/month — so you can liquidate your Meta Ads spend on day one
+            and turn every high-ticket client into 100% profit.
           </p>
         </Reveal>
 
         <Reveal delay={240} style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
-          <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a strategy call <Arrow /></a>
+          <a href="#cta" className="btn btn-primary">Book a strategy call <Arrow /></a>
           <a href="#cases" className="btn btn-ghost">See client results</a>
         </Reveal>
 
@@ -67,12 +72,66 @@ function Hero({ headline }) {
         {/* VSL */}
         <Reveal delay={400} style={{ marginTop: 72 }}>
           <div style={{
+            position: 'relative',
+            aspectRatio: '16 / 9',
             maxWidth: 1080, margin: '0 auto',
+            background: 'linear-gradient(135deg, #0c1118 0%, #0a0d12 50%, #11161e 100%)',
             border: '1px solid var(--line-2)',
             borderRadius: 22, overflow: 'hidden',
             boxShadow: '0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,158,255,0.06)',
           }}>
-            <div id="vidalytics_embed_3EtxWJrQAsHugKqW" style={{ width: '100%', position: 'relative', paddingTop: '56.25%' }}></div>
+            <VSLBackground />
+            <div style={{
+              position: 'absolute', top: 16, left: 16, right: 16,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: 'var(--ink-3)', letterSpacing: '0.08em'
+            }}>
+              <span>● REC · FUNNEL BREAKDOWN</span>
+              <span>02:47 / 09:14</span>
+            </div>
+
+            {!playing && (
+              <button
+                onClick={() => setPlaying(true)}
+                style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent', border: 0, cursor: 'pointer' }}
+                aria-label="Play VSL"
+              >
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 14,
+                  padding: '14px 14px 14px 22px',
+                  background: 'rgba(255,255,255,0.06)',
+                  backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: 999, color: 'var(--ink)',
+                }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(74,158,255,0.15)'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  <span style={{ fontSize: 13, letterSpacing: '-0.01em', fontWeight: 500 }}>Watch the 9-min breakdown</span>
+                  <span style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--accent)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#051020' }}>
+                    <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0L12 7L0 14V0Z" /></svg>
+                  </span>
+                </span>
+              </button>
+            )}
+            {playing && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink-3)', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
+                ▮▮ video placeholder · click to pause
+                <button onClick={() => setPlaying(false)} style={{ position: 'absolute', inset: 0, background: 'transparent', border: 0 }} aria-label="Pause" />
+              </div>
+            )}
+
+            <div style={{
+              position: 'absolute', bottom: 16, left: 16, right: 16,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-3)',
+            }}>
+              <span>HOW THE LOW-TICKET ASCENSION SYSTEM WORKS</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)' }} /> MARKETING31
+              </span>
+            </div>
           </div>
         </Reveal>
       </div>
