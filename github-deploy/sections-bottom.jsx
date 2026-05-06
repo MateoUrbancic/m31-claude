@@ -31,7 +31,7 @@ function Process() {
       <div className="container">
         <SectionHead
           num="02" kicker="PROCESS · 21 DAYS TO LAUNCH"
-          title={<>Test first. Build second. <span className="italic-disp" style={{ color: 'var(--accent)' }}>Scale always.</span></>}
+          title={<>The launch process that <span className="italic-disp" style={{ color: 'var(--accent)' }}>guarantees success.</span></>}
         />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 0 }}>
           {steps.map((s, i) => (
@@ -72,36 +72,87 @@ function Process() {
 }
 
 function Cases() {
+  const [open, setOpen] = useState(null);
+  
   const cases = [
     {
       tag: 'COMMUNITY · SKOOL',
       brand: 'Evolve',
-      headline: '3.5x ROAS and 500+ customers for the #1 community on Skool.',
+      headline: 'Evolve, #1 on Skool — 3.5x ROAS and 500+ customers acquired.',
+      founderName: 'Spencer Pavlov',
+      founderImage: 'uploads/spencer-pavlov.jpg',
       bullets: [
-        ['3.5x', 'Return on Ad Spend'],
+        ['3.54x', 'Return on Ad Spend'],
         ['500+', 'Low-ticket customers'],
         ['$99/mo', 'Origins ascension'],
         ['$1,500/mo', 'Evolve flagship ascension'],
       ],
-      quote: 'We built a low-ticket funnel selling winning ad templates as the front-end product. Buyers were routed straight into a post-purchase VSL — no separate webinar, no call booking. The system converted cold traffic into $1,500/mo members.',
-      author: 'Spencer, Founder — Evolve',
-      sparkline: [4, 5, 6, 8, 11, 16, 22, 28, 35, 42, 50, 58],
+      quote: 'Just want to say you\'ve done a fire ass job. Like the value you\'re providing is crazy.',
+      quoteAttrib: 'Spencer Pavlov, Founder — Evolve (#1 on Skool)',
+      situation: 'Spencer Pavlov is the founder of Evolve, a Skool community for e-commerce brand owners. He had two offers: Origins at $99/month and his flagship Evolve community at $1,500/month. His content was performing well organically — but he wasn\'t running any systematic paid acquisition. The problem was obvious: you can\'t point cold Meta traffic directly at a $1,500/month community and expect it to convert. Mateo spotted Spencer\'s ads, identified the opportunity, and reached out with a solution.',
+      insight: 'Spencer already had a natural low-ticket product hiding in plain sight — his winning Meta ad templates. These were real ads that had already proven themselves in the market, which made them genuinely valuable to the e-commerce audience he was already speaking to. Packaging 13 templates at $13 created an irresistible no-brainer offer: one dollar per template. The price point wasn\'t arbitrary — it was a framing device that made saying no feel irrational.',
+      whatWeBuilt: [
+        { stage: 'Front-end', desc: 'A $13 offer — 13 winning Meta ad templates. The product naturally attracted e-commerce brand owners and beginners looking to improve their Meta ad performance, which was exactly Spencer\'s ideal customer for Origins and Evolve.' },
+        { stage: 'Order bumps', desc: 'Two order bumps at checkout: a winning copy AI prompt for static ads (~$16) and a bundle of BFCM promotional templates (~$11). Both low enough that buyers already in purchasing mode didn\'t hesitate — significantly increasing AOV and allowing ad spend to be recouped on the front end alone.' },
+        { stage: 'Post-purchase ascension', desc: 'After checkout, buyers landed on a thank you page with a VSL introducing Origins and Evolve. They were simultaneously added to an email list sending a nurture sequence pitching both communities — moving buyers from a $13 template purchase to a $99/mo or $1,500/mo membership.' },
+      ],
+      results: 'The funnel was live in under a month. First sales came in within the first three weeks. Running at ~$100/day in ad spend, the system consistently acquired new customers daily while maintaining a 3.54x ROAS — including backend revenue from Origins and Evolve attributed through Meta. Over 500 low-ticket customers acquired. The funnel was self-liquidating: front-end and order bump revenue covered daily ad spend, making every backend community sale pure profit.',
+      proofImages: ['uploads/Spencer.png', 'uploads/Spencer 2.png'],
+      salesPageImage: 'uploads/Screenshot_3.png',
+    },
+    {
+      tag: 'CREATOR · FITNESS',
+      brand: 'Oleksiy Kononov',
+      headline: '$96K in pure profit added via email promotions towards a list of low-ticket customers.',
+      founderName: 'Oleksiy Kononov',
+      founderImage: 'uploads/pasted-1778078090694-0.png',
+      bullets: [
+        ['$96K', 'Revenue generated'],
+        ['10K', 'Subscriber list'],
+        ['3–5 days', 'Promo launch length'],
+        ['30–50%', 'Promo discount structure'],
+      ],
+      quote: 'Mateo fully understands email marketing. He is a master of email.',
+      quoteAttrib: 'Oleksiy Kononov, Handstand Coach & Creator',
+      situation: 'Oleksiy Kononov is a handstand coach and gymnast who sells mobility and handstand training programs online. He had built a solid low-ticket product business — buyers acquired through Meta ads on the front end — but the relationship with those buyers largely ended at the point of purchase. He had around 10,000 email subscribers, roughly 6,000 active, sitting almost entirely dormant. A warm list of people who had already bought, already trusted him, and were already interested in his training. It just wasn\'t being spoken to.',
+      insight: 'Buyers are the best customers. Someone who has already paid $27 for a mobility challenge is far more likely to spend $100–200 on a comprehensive full set than a cold prospect is to buy anything at all. The list didn\'t need more nurturing — it needed structured, well-timed promotional campaigns that gave existing buyers a compelling reason to take the next step.',
+      whatWeBuilt: [
+        { stage: 'Promo system', desc: 'A recurring email promo structure built around Oleksiy\'s three core Full Sets — Full Body Mobility, Handstand Full Set, and Happy Back Full Set — each normally priced $100–200. Rather than passive email selling, we ran structured 2–5 day promotional launches with 1–3 emails per day.' },
+        { stage: 'Sequence engineering', desc: 'Each sequence was built to open with the value proposition, build desire through the middle days, and close hard on scarcity and deadline in the final 24 hours — with 30–50% time-limited discounts creating genuine urgency.' },
+        { stage: 'Timing strategy', desc: 'Promos were timed around natural buying moments — end of month, seasonal hooks, or whenever the list had had enough time to breathe since the last send. Frequency was calibrated to avoid list fatigue while maximising revenue per send.' },
+      ],
+      results: 'Over a few months of running promotional campaigns to his active buyer list, the system generated $96,000 in revenue — from an asset Oleksiy already owned. No additional ad spend, no new product creation, no new audience required. The full sets were the natural next step for buyers who had already experienced his front-end products and wanted to go deeper. The promo structure consistently converted because the audience was warm, the offer was relevant, and the urgency was real.',
+      proofImages: [],
+      salesPageImage: null,
+      testimonialVideo: 'https://www.youtube.com/embed/lzFSLUPeYQs',
     },
     {
       tag: 'AGENCY · EMAIL MARKETING',
-      brand: 'Email Marketing Agency',
-      headline: 'Low-ticket front end booked calls with $50K/mo and $500K/mo e-commerce brands.',
+      brand: 'Escend Media',
+      headline: 'A $5 low-ticket product sold to book calls with brands doing $50K/month and more.',
+      founderName: 'Derek Stroh',
+      founderImage: 'uploads/derek-stroh.jpg',
       bullets: [
-        ['$0', 'Prior paid ad spend'],
-        ['2', 'Qualified sales calls booked'],
-        ['$500K/mo', 'Largest brand reached'],
-        ['Low', 'Ad budget used'],
+        ['$5', 'Front-end product price'],
+        ['$38 CAD', 'Cost per buyer at optimisation'],
+        ['$500K/mo', 'Largest brand booked'],
+        ['$50K/mo', 'Second brand booked'],
       ],
-      quote: 'The lead quality argument was the key takeaway: a low-ticket product booked sales calls with brands at $50K/mo and $500K/mo. This is direct evidence against the assumption that low-ticket products attract low-intent leads.',
-      author: 'Founder — Email Marketing Agency',
-      sparkline: [2, 3, 3, 5, 7, 9, 12, 14, 17, 19, 22, 24],
+      quote: 'FYI: Kateryna was a great lead. Doing $500k/mo right now… went well, got an audit + pitch scheduled for Monday.',
+      quoteAttrib: 'Derek Stroh, Founder — Escend Media',
+      situation: 'Derek Stroh runs Escend Media, an email marketing agency for e-commerce brands. His challenge wasn\'t product-market fit — it was lead quality. The standard approach of running lead gen ads attracts anyone who clicks. He needed a system that filtered for serious, high-revenue operators before they ever got on a call — so he wasn\'t wasting time with brands too small to afford his retainer.',
+      insight: 'The sales page copy could do the qualifying work. By building messaging around "the proven abandoned cart flow that recovered $124,344 in 30 days" and framing results in language only relevant to brands already doing real volume, the page naturally repelled early-stage operators and pulled in the right ICP. The $5 price tag maximised buyer volume — but the messaging ensured only the right buyers felt it was for them.',
+      whatWeBuilt: [
+        { stage: 'Front-end', desc: 'A $5 done-for-you abandoned cart email sequence — four emails a serious Shopify brand could plug in immediately. Low price to maximise volume; high-specificity copy to filter for quality.' },
+        { stage: 'Order bump', desc: 'An 8-figure email checklist Derek had already built was added at checkout — a natural complement requiring zero additional production cost, lifting AOV with a single click.' },
+        { stage: 'Post-purchase qualification', desc: 'After checkout, buyers completed a short survey. Anyone spending $10K+/mo on Meta was automatically routed to a VSL and book-a-call page for a free strategy session with Derek. Lower-spend buyers were not shown the calendar — keeping his pipeline filtered and his time protected.' },
+      ],
+      results: 'The campaign ran in two phases: ~$300–400 to validate the offer, then ~$600 to begin scaling. CPA dropped to $38 CAD per buyer as the system found its rhythm. The funnel booked calls with two high-quality brands — one at $50K/mo and one at $500K/mo. The $500K/mo lead (Kateryna) went well enough that Derek scheduled both an audit and a pitch call the same week. The campaign was paused before it could fully optimise — the trajectory pointed to a cost per booked call well under $100 CAD had it continued.',
+      proofImages: ['uploads/Derek Screenshot.png'],
+      salesPageImage: 'uploads/screencapture-go-escend-media-home-page-563516-8245-9146-920396-2026-01-12-19_45_29.png',
     },
   ];
+  
   return (
     <section id="cases">
       <div className="container">
@@ -109,80 +160,401 @@ function Cases() {
           num="03" kicker="CASE STUDIES · REAL RESULTS"
           title={<>Proof the <span className="italic-disp" style={{ color: 'var(--accent)' }}>system works.</span></>}
         />
-        <div className="grid" style={{ gap: 18 }}>
-          {cases.map((c, i) => <CaseCard key={i} c={c} />)}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          {cases.map((c, i) => (
+            <Reveal key={i} delay={i * 80}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                style={{
+                  width: '100%',
+                  textAlign: 'left',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <div className="card" style={{ padding: 0, overflow: 'hidden', transition: 'all .3s ease' }}>
+                  {/* Front view with image and headline */}
+                  <div style={{ display: 'grid', gridTemplateColumns: c.founderImage ? '1fr 1fr' : '1fr', gap: 0, minHeight: 300, alignItems: 'stretch' }}>
+                    {/* Left side: headline and metrics */}
+                    <div style={{ padding: 36, display: 'flex', flexDirection: 'column', gap: 24, justifyContent: 'space-between' }}>
+                      <div>
+                        <span style={{
+                          fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em'
+                        }}>{c.tag}</span>
+                        <h3 style={{ fontSize: 'clamp(24px, 2.6vw, 36px)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.15, marginTop: 16, maxWidth: '28ch' }}>
+                          <span style={{ color: '#FFD700' }}>{c.brand}</span>
+                        </h3>
+                        <p style={{ fontSize: 16, color: 'var(--ink-2)', marginTop: 12, lineHeight: 1.5, maxWidth: '36ch' }}>
+                          {c.headline}
+                        </p>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+                        {c.bullets.map(([n, l], j) => (
+                          <div key={j}>
+                            <div style={{ fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1 }}>
+                              <span className="tnum" style={{ color: j === 1 || j === 2 ? 'var(--accent)' : 'var(--ink)' }}>{n}</span>
+                            </div>
+                            <div style={{ marginTop: 8, fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Right side: founder image */}
+                    {c.founderImage && (
+                      <div style={{ position: 'relative', overflow: 'hidden', borderLeft: '1px solid var(--line)' }}>
+                        <img src={c.founderImage} alt={c.founderName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: c.founderImage && c.founderImage.includes('1778078090694') ? 'center center' : 'center 35%' }} />
+                        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 20, background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%)' }}>
+                          <div style={{ fontSize: 15, fontWeight: 500, color: 'white', letterSpacing: '-0.01em' }}>{c.founderName}</div>
+                          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>Founder</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              {/* Expanded content */}
+              {open === i && (
+                <Reveal>
+                  <div className="card" style={{ padding: 36, marginTop: -1, borderTopLeftRadius: 0, borderTopRightRadius: 0, display: 'flex', flexDirection: 'column', gap: 40 }}>
+
+                    {/* Situation + Insight */}
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }} className="case-expand">
+                      <div>
+                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 12 }}>THE SITUATION</div>
+                        <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{c.situation}</p>
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--accent)', letterSpacing: '0.12em', marginBottom: 12 }}>THE INSIGHT</div>
+                        <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{c.insight}</p>
+                      </div>
+                    </div>
+
+                    {/* What we built */}
+                    <div style={{ paddingTop: 32, borderTop: '1px solid var(--line)' }}>
+                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 20 }}>WHAT WE BUILT</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+                        {c.whatWeBuilt.map((w, j) => (
+                          <div key={j} style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: 24, padding: '18px 0', borderTop: '1px solid var(--line)', alignItems: 'baseline' }}>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--accent)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{w.stage}</div>
+                            <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--ink-2)', margin: 0 }}>{w.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Sales page screenshot + results side by side */}
+                    <div style={{ paddingTop: 32, borderTop: '1px solid var(--line)', display: 'grid', gridTemplateColumns: (c.salesPageImage || c.testimonialVideo) ? '260px 1fr' : '1fr', gap: 40, alignItems: 'start' }} className="case-results-grid">
+                      {c.salesPageImage && (
+                        <div>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 12 }}>SALES PAGE</div>
+                          <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid var(--line-2)', maxHeight: 340, overflowY: 'auto' }}>
+                            <img src={c.salesPageImage} alt="Sales page" style={{ width: '100%', display: 'block' }} />
+                          </div>
+                        </div>
+                      )}
+                      {!c.salesPageImage && c.testimonialVideo && (
+                        <div>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 12 }}>VIDEO TESTIMONIAL</div>
+                          <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid var(--line-2)', aspectRatio: '9/16', position: 'relative' }}>
+                            <iframe
+                              src={c.testimonialVideo}
+                              title="Video testimonial"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              style={{ width: '100%', height: '100%', border: 'none', position: 'absolute', inset: 0 }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+                        <div>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 12 }}>THE RESULTS</div>
+                          <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{c.results}</p>
+                        </div>
+
+                        {/* Quote */}
+                        <div style={{ paddingTop: 24, borderTop: '1px solid var(--line)' }}>
+                          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 16 }}>DIRECT FEEDBACK</div>
+                          <blockquote style={{ borderLeft: '2px solid var(--accent)', paddingLeft: 20, margin: 0 }}>
+                            <p style={{ fontSize: 16, lineHeight: 1.6, fontStyle: 'italic', color: 'var(--ink)', margin: 0 }}>"{c.quote}"</p>
+                            <footer style={{ marginTop: 10, fontSize: 12, color: 'var(--ink-3)', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.06em' }}>{c.quoteAttrib}</footer>
+                          </blockquote>
+                        </div>
+
+                        {/* Discord proof screenshots */}
+                        {c.proofImages && c.proofImages.length > 0 && (
+                          <div>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.12em', marginBottom: 12 }}>UNPROMPTED MESSAGES</div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                              {c.proofImages.map((img, k) => (
+                                <div key={k} style={{ borderRadius: 10, overflow: 'hidden', border: '1px solid var(--line-2)' }}>
+                                  <img src={img} alt="Client message" style={{ width: '100%', display: 'block' }} />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                  </div>
+                </Reveal>
+              )}
+            </Reveal>
+          ))}
         </div>
+        <style>{`
+          @media (max-width: 800px) {
+            .case-expand { grid-template-columns: 1fr !important; }
+            .case-results-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </div>
     </section>
   );
 }
 
-function CaseCard({ c }) {
-  const w = 280, h = 80, pad = 6;
-  const min = Math.min(...c.sparkline), max = Math.max(...c.sparkline);
-  const range = max - min || 1;
-  const pts = c.sparkline.map((v, i) => {
-    const x = pad + (i / (c.sparkline.length - 1)) * (w - pad * 2);
-    const y = h - pad - ((v - min) / range) * (h - pad * 2);
-    return [x, y];
-  });
-  const linePath = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ');
-  const fillPath = `${linePath} L ${pts[pts.length - 1][0]} ${h - pad} L ${pts[0][0]} ${h - pad} Z`;
-
+// Flowchart helpers
+function FlowStage({ num, label, color, tagline, children }) {
   return (
-    <Reveal>
-      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 0, minHeight: 340 }} className="case-grid">
-          <div style={{ padding: 36, display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-3)', letterSpacing: '0.12em' }}>{c.tag}</span>
-              <span style={{ fontWeight: 500, letterSpacing: '-0.01em' }}>{c.brand}</span>
-            </div>
-            <h3 style={{ fontSize: 'clamp(20px, 2.4vw, 32px)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1, maxWidth: '26ch' }}>
-              {c.headline}
-            </h3>
-            <blockquote style={{ borderLeft: '2px solid var(--accent)', paddingLeft: 16, color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.55, fontStyle: 'normal', maxWidth: '52ch', marginTop: 'auto' }}>
-              {c.quote}
-              <div style={{ marginTop: 12, fontSize: 12, color: 'var(--ink-4)', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.06em' }}>— {c.author.toUpperCase()}</div>
-            </blockquote>
-          </div>
-
+    <div style={{
+      borderRadius: 16,
+      background: `linear-gradient(180deg, ${hexToRgba(color, 0.08)} 0%, ${hexToRgba(color, 0.02)} 100%)`,
+      border: `1px solid ${hexToRgba(color, 0.22)}`,
+      padding: 16,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 10,
+      position: 'relative',
+      minHeight: 320,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
-            background: 'linear-gradient(180deg, rgba(74,158,255,0.06) 0%, transparent 100%)',
-            borderLeft: '1px solid var(--line)',
-            padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 24
-          }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-              {c.bullets.map(([n, l], i) => (
-                <div key={i}>
-                  <div style={{ fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1 }}>
-                    <span className="tnum" style={{ color: i === 1 || i === 2 ? 'var(--accent)' : 'var(--ink)' }}>{n}</span>
-                  </div>
-                  <div style={{ marginTop: 8, fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" style={{ width: '100%', height: 80 }}>
-              <defs>
-                <linearGradient id={`sg-${c.brand.replace(/\s/g, '')}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.45" />
-                  <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path d={fillPath} fill={`url(#sg-${c.brand.replace(/\s/g, '')})`} />
-              <path d={linePath} stroke="var(--accent)" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              {pts.map((p, i) => i === pts.length - 1 && <circle key={i} cx={p[0]} cy={p[1]} r="3.5" fill="var(--accent)" />)}
-            </svg>
-          </div>
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color, letterSpacing: '0.14em',
+            border: `1px solid ${hexToRgba(color, 0.4)}`, padding: '3px 8px', borderRadius: 4
+          }}>{num}</div>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color, letterSpacing: '0.14em', fontWeight: 600 }}>{label}</div>
         </div>
-        <style>{`
-          @media (max-width: 800px) {
-            .case-grid { grid-template-columns: 1fr !important; }
-            .case-grid > div:last-child { border-left: 0 !important; border-top: 1px solid var(--line); }
-          }
-        `}</style>
       </div>
-    </Reveal>
+      <div style={{ fontSize: 12, color: 'var(--ink-3)', lineHeight: 1.4, marginBottom: 4 }}>{tagline}</div>
+      {children}
+    </div>
+  );
+}
+
+function FlowNode({ color, label, sub, primary, small }) {
+  return (
+    <div style={{
+      background: primary ? color : hexToRgba(color, 0.12),
+      border: primary ? 'none' : `1px solid ${hexToRgba(color, 0.4)}`,
+      borderRadius: 10,
+      padding: small ? '8px 10px' : '10px 14px',
+      width: '100%',
+      transition: 'transform .2s ease',
+    }}>
+      <div style={{
+        fontSize: small ? 11 : 13,
+        fontWeight: 600,
+        color: primary ? '#051020' : color,
+        letterSpacing: '-0.01em',
+        lineHeight: 1.2
+      }}>{label}</div>
+      {sub && <div style={{
+        fontSize: 10,
+        color: primary ? 'rgba(5,16,32,0.65)' : 'var(--ink-3)',
+        marginTop: 3,
+        fontFamily: "'JetBrains Mono', monospace",
+        letterSpacing: '0.04em'
+      }}>{sub}</div>}
+    </div>
+  );
+}
+
+function FlowDivider() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 0', opacity: 0.5 }}>
+      <div style={{ flex: 1, height: 1, background: 'var(--line-2)' }}></div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--ink-4)', letterSpacing: '0.14em' }}>+ AOV BOOST</div>
+      <div style={{ flex: 1, height: 1, background: 'var(--line-2)' }}></div>
+    </div>
+  );
+}
+
+function FlowBranch() {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '4px 0' }}>
+      <svg width="60" height="20" viewBox="0 0 60 20" fill="none">
+        <path d="M30 0 V 8 M 30 8 H 6 V 18 M 30 8 H 54 V 18" stroke="var(--line-2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      </svg>
+    </div>
+  );
+}
+
+function FlowBranchNode({ label, color, sub, tag, tagColor, dark }) {
+  return (
+    <div style={{
+      background: dark ? hexToRgba(color, 0.1) : color,
+      border: dark ? `1px solid ${hexToRgba(color, 0.3)}` : 'none',
+      borderRadius: 10,
+      padding: '10px 12px',
+      textAlign: 'center',
+      position: 'relative',
+    }}>
+      <div style={{
+        position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)',
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: tagColor,
+        background: 'var(--bg-2)', padding: '1px 6px', borderRadius: 3, letterSpacing: '0.12em'
+      }}>{tag}</div>
+      <div style={{ fontSize: 12, fontWeight: 600, color: dark ? color : 'white', lineHeight: 1.3 }}>{label}</div>
+      {sub && <div style={{ fontSize: 10, color: dark ? 'var(--ink-3)' : 'rgba(255,255,255,0.8)', marginTop: 2, fontFamily: 'monospace' }}>{sub}</div>}
+    </div>
+  );
+}
+
+function FlowMetric({ value, unit, note, color }) {
+  return (
+    <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: `1px dashed ${hexToRgba(color, 0.25)}`, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+      <div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+          <div style={{ fontSize: 'clamp(18px, 1.8vw, 24px)', fontWeight: 500, color, letterSpacing: '-0.04em', lineHeight: 1, fontFamily: "'JetBrains Mono', monospace" }}>{value}</div>
+          <div style={{ fontSize: 10, color, fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.12em', fontWeight: 600 }}>{unit}</div>
+        </div>
+        <div style={{ fontSize: 10, color: 'var(--ink-4)', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.08em', marginTop: 4 }}>{note}</div>
+      </div>
+    </div>
+  );
+}
+
+function FlowConnector() {
+  return (
+    <div className="flow-connector" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+        <path d="M2 2 L10 10 L2 18" stroke="var(--ink-4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
+      </svg>
+    </div>
+  );
+}
+
+function hexToRgba(hex, alpha) {
+  // Handles var(--accent) by mapping to known accent
+  if (hex === 'var(--accent)') hex = '#4A9EFF';
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function WhyLowTicket() {
+  return (
+    <section style={{ background: 'var(--bg-2)' }}>
+      <div className="container">
+        <SectionHead
+          num="04" kicker="THE FRAMEWORK"
+          title={<>Why a <span className="italic-disp" style={{ color: 'var(--accent)' }}>low-ticket funnel?</span></>}
+        />
+        <Reveal>
+          <div style={{ maxWidth: '68ch', marginBottom: 48, marginTop: -24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <p style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: 1.65, color: 'var(--ink-2)' }}>
+              Running ads for your business is risky — especially if you use the wrong system.
+            </p>
+            <p style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: 1.65, color: 'var(--ink-2)' }}>
+              With a book-a-call system, you're likely spending $150 or more to book calls with people that aren't guaranteed to convert. With webinars, you're paying $5 per sign up for people that aren't guaranteed to show up — or let alone buy your offer at the end of it.
+            </p>
+            <p style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: 1.65, color: 'var(--ink-2)' }}>
+              But with a low-ticket funnel, you're selling a low-ticket product, getting customers for it and immediately breaking even on your ad spend. This allows you to upsell these same people on the backend at <span style={{ color: 'var(--ink)', fontWeight: 500 }}>100% profit</span> and <span style={{ color: 'var(--ink)', fontWeight: 500 }}>100% risk-free.</span>
+            </p>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18, marginBottom: 'clamp(40px, 5vw, 72px)' }} className="why-grid">
+            <div style={{ padding: 28, border: '1px solid rgba(255,92,61,0.2)', borderRadius: 16, background: 'rgba(255,92,61,0.04)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--warn)', letterSpacing: '0.12em' }}>BOOK-A-CALL</div>
+              <div style={{ fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 500, letterSpacing: '-0.04em', color: 'var(--warn)' }}>$150+</div>
+              <p style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--ink-3)' }}>Per call booked — with people who aren't guaranteed to convert.</p>
+            </div>
+            <div style={{ padding: 28, border: '1px solid rgba(255,92,61,0.2)', borderRadius: 16, background: 'rgba(255,92,61,0.04)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--warn)', letterSpacing: '0.12em' }}>WEBINAR</div>
+              <div style={{ fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 500, letterSpacing: '-0.04em', color: 'var(--warn)' }}>$5+</div>
+              <p style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--ink-3)' }}>Per sign-up for people not guaranteed to show up or buy at the end.</p>
+            </div>
+            <div style={{ padding: 28, border: '1px solid rgba(74,158,255,0.3)', borderRadius: 16, background: 'rgba(74,158,255,0.05)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--accent)', letterSpacing: '0.12em' }}>LOW-TICKET FUNNEL</div>
+              <div style={{ fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 500, letterSpacing: '-0.04em', color: 'var(--accent)' }}>Day 1</div>
+              <p style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--ink-2)' }}>Break even immediately. Upsell the same customers on the backend at 100% profit, 100% risk-free.</p>
+            </div>
+          </div>
+          <style>{`@media (max-width: 800px) { .why-grid { grid-template-columns: 1fr !important; } }`}</style>
+        </Reveal>
+
+        {/* Flowchart — premium redesign */}
+        <Reveal>
+          <div style={{ marginTop: 64, position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 40, flexWrap: 'wrap', gap: 12 }}>
+              <div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--ink-4)', letterSpacing: '0.16em' }}>FIG.01 — THE SYSTEM</div>
+                <h3 style={{ fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 500, letterSpacing: '-0.03em', marginTop: 8, lineHeight: 1.15 }}>
+                  How a single visitor becomes <span className="italic-disp" style={{ color: 'var(--accent)' }}>pure profit.</span>
+                </h3>
+              </div>
+              <div style={{ display: 'flex', gap: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.12em', color: 'var(--ink-4)' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)' }}></span>STAGE 01</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span style={{ width: 8, height: 8, borderRadius: '50%', background: '#FFD24D' }}></span>STAGE 02</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span style={{ width: 8, height: 8, borderRadius: '50%', background: '#5BFF8F' }}></span>STAGE 03</span>
+              </div>
+            </div>
+
+            <div className="flow-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 24px 1fr 24px 1fr', gap: 0, position: 'relative', alignItems: 'stretch' }}>
+              {/* Stage 01 — Get Buyers */}
+              <FlowStage num="01" label="GET BUYERS" color="var(--accent)" tagline="Cold traffic in.">
+                <FlowNode color="var(--accent)" label="Sales Page" sub="Low-ticket offer · $27–97" primary />
+                <FlowMetric value="$2.40" unit="CPM" note="Cold Meta traffic" color="var(--accent)" />
+              </FlowStage>
+
+              {/* Connector 1 → 2 */}
+              <FlowConnector />
+
+              {/* Stage 02 — Break Even */}
+              <FlowStage num="02" label="BREAK EVEN ON ADS" color="#FFD24D" tagline="Recoup spend instantly.">
+                <FlowNode color="var(--accent)" label="Checkout" sub="Card details captured" primary />
+                <FlowDivider />
+                <FlowNode color="#FFD24D" label="Order Bump #1" sub="+$47 AOV lift" small />
+                <FlowNode color="#FFD24D" label="Order Bump #2" sub="+$97 AOV lift" small />
+                <FlowMetric value="100%" unit="ROAS" note="Day 01 · break even" color="#FFD24D" />
+              </FlowStage>
+
+              {/* Connector 2 → 3 */}
+              <FlowConnector />
+
+              {/* Stage 03 — Pure Profit */}
+              <FlowStage num="03" label="100% PROFIT" color="#5BFF8F" tagline="Backend takes over.">
+                <FlowNode color="var(--accent)" label="Post-Purchase VSL" sub="Webinar · Book-a-call" primary />
+                <FlowBranch />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, width: '100%' }}>
+                  <FlowBranchNode label="Sales Call" color="#FF6A3D" tag="YES" tagColor="#5BFF8F" />
+                  <FlowBranchNode label="Remarketing" color="#5BFF8F" sub="Email · SMS" tag="NO" tagColor="var(--ink-4)" dark />
+                </div>
+                <FlowMetric value="∞" unit="MARGIN" note="High-ticket backend" color="#5BFF8F" />
+              </FlowStage>
+            </div>
+
+            <style>{`
+              @media (max-width: 900px) {
+                .flow-wrap { grid-template-columns: 1fr !important; }
+                .flow-connector { transform: rotate(90deg); margin: 12px auto !important; }
+              }
+            `}</style>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-2" style={{ gap: 24 }}>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -235,21 +607,19 @@ function Founder() {
           <Reveal>
             <div style={{
               aspectRatio: '4 / 5', borderRadius: 20,
-              background: 'linear-gradient(135deg, #14171D 0%, #1d2128 50%, #0c0f14 100%)',
               border: '1px solid var(--line-2)', position: 'relative', overflow: 'hidden',
             }}>
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(120px, 18vw, 220px)', fontWeight: 500, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.06)' }}>M31</div>
-              <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--ink-4)', letterSpacing: '0.1em' }}>
+              <img src="uploads/pasted-1777447567637-0.png" alt="Founder" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>
                 <span>FOUNDER</span><span>MARKETING31</span>
               </div>
               <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                 <div>
-                  <div style={{ fontSize: 20, fontWeight: 500, letterSpacing: '-0.02em' }}>Your Name</div>
-                  <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 4 }}>Founder, Marketing31</div>
+                  <div style={{ fontSize: 20, fontWeight: 500, letterSpacing: '-0.02em', color: 'white', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Mateo</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 4, textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Founder, Marketing31</div>
                 </div>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--accent)' }}>● ONLINE</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--accent)', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>● ONLINE</span>
               </div>
-              <div style={{ position: 'absolute', bottom: -100, right: -100, width: 300, height: 300, background: 'radial-gradient(circle, rgba(74,158,255,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
             </div>
           </Reveal>
           <Reveal delay={120}>
@@ -304,40 +674,6 @@ function Fit() {
     <section id="fit" style={{ background: 'var(--bg-2)' }}>
       <div className="container">
         <SectionHead num="06" kicker="IS THIS FOR ME?" title={<>The system works — <span className="italic-disp" style={{ color: 'var(--accent)' }}>for the right business.</span></>} />
-        <div className="grid grid-2" style={{ gap: 24 }}>
-          <Reveal>
-            <div className="card" style={{ padding: 36, height: '100%', borderColor: 'rgba(91,255,143,0.25)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                <span style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(91,255,143,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#5BFF8F' }}><Check size={18} /></span>
-                <h3 style={{ fontSize: 24 }}>You&rsquo;re a fit if…</h3>
-              </div>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {fit.map((f, i) => (
-                  <li key={i} style={{ display: 'flex', gap: 14, fontSize: 15, lineHeight: 1.5, color: 'var(--ink)' }}>
-                    <span style={{ color: '#5BFF8F', flexShrink: 0, marginTop: 4 }}><Check /></span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="card" style={{ padding: 36, height: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                <span style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(255,92,61,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--warn)', fontSize: 22, lineHeight: 1 }}>×</span>
-                <h3 style={{ fontSize: 24 }}>Probably not if…</h3>
-              </div>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {notFit.map((f, i) => (
-                  <li key={i} style={{ display: 'flex', gap: 14, fontSize: 15, lineHeight: 1.5, color: 'var(--ink-2)' }}>
-                    <span style={{ color: 'var(--ink-4)', flexShrink: 0, marginTop: 4, fontSize: 18, lineHeight: '20px' }}>×</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        </div>
 
         {/* Pricing */}
         <Reveal delay={240}>
@@ -445,8 +781,8 @@ function FinalCTA() {
                 your ad spend gets liquidated on day one. No pitch deck. Just the math.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 40, flexWrap: 'wrap' }}>
-                <a href="#" className="btn btn-primary">Book a strategy call <Arrow /></a>
-                <a href="#" className="btn btn-ghost">See the Evolve case study</a>
+                <a href="https://calendly.com/mateo-m31/quick-call" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a strategy call <Arrow /></a>
+                <a href="#cases" className="btn btn-ghost">See the Evolve case study</a>
               </div>
               <div style={{ marginTop: 28, fontSize: 13, color: 'var(--ink-3)', display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
                 <span>Free 30-min call</span>
@@ -500,4 +836,4 @@ function Footer() {
   );
 }
 
-Object.assign(window, { Process, Cases, CaseCard, Testimonials, Founder, Fit, FAQ, FinalCTA, Footer });
+Object.assign(window, { Process, Cases, Testimonials, WhyLowTicket, Founder, Fit, FAQ, FinalCTA, Footer });
