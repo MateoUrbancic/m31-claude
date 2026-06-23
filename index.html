@@ -3,22 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Marketing 31 — Scale Your Info-Business</title>
+<title>Marketing 31, Scale Your Info-Business</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
-<script type="text/javascript">
-(function (v, i, d, a, l, y, t, c, s) {
-    y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
-    if (!vsl){vsl=function(u,cb){
-        if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
-        if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
-        i.getElementsByTagName("head")[0].appendChild(s);
-    };}
-    vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-})(window, document, 'Vidalytics', 'vidalytics_embed_3EtxWJrQAsHugKqW', 'https://fast.vidalytics.com/embeds/JWZSX0ZA/3EtxWJrQAsHugKqW/');
-</script>
+<link rel="stylesheet" href="styles-light.css" />
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body data-density="regular">
 <div id="root"></div>
@@ -29,13 +20,13 @@
 
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="shared.jsx"></script>
-<script type="text/babel" src="sections-top.jsx"></script>
-<script type="text/babel" src="sections-bottom.jsx"></script>
+<script type="text/babel" src="sections-top-light.jsx"></script>
+<script type="text/babel" src="sections-bottom-light.jsx"></script>
 
 <script type="text/babel" data-presets="react">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#4A9EFF",
-  "headline": "Scale with ads that pay for themselves |from day one.|",
+  "accent": "#2A6FDB",
+  "headline": "We'll build you an extremely profitable paid ads acquisition system |in 21 days or less.|",
   "density": "regular",
   "showMarquee": true,
   "showFounder": true
@@ -46,7 +37,6 @@ function App() {
 
   React.useEffect(() => {
     document.documentElement.style.setProperty('--accent', t.accent);
-    // Derive a slightly brighter version for the secondary accent
     document.documentElement.style.setProperty('--accent-2', t.accent);
     document.body.dataset.density = t.density;
   }, [t.accent, t.density]);
@@ -55,14 +45,16 @@ function App() {
     <>
       <Nav />
       <Hero headline={t.headline} />
+      <ClientLogos />
       {t.showMarquee && <MarqueeRow />}
-      <Cases />
-      <WhyLowTicket />
+      <FunnelTypes />
       <Services />
       <Process />
-      <Testimonials />
-      {t.showFounder && <Founder />}
+      <Cases />
+      <FunnelShowcase />
+      <StaticAds />
       <Fit />
+      {t.showFounder && <Founder />}
       <FAQ />
       <FinalCTA />
       <Footer />
@@ -75,6 +67,14 @@ function App() {
                     onChange={(v) => setTweak('density', v)} />
 
         <TweakSection label="Hero copy" />
+        <TweakSelect label="Hook" value={t.headline}
+                     options={[
+                       { value: "We'll build you an extremely profitable paid ads acquisition system |in 21 days or less.|", label: '21 days' },
+                       { value: 'Three funnels. Our ads. A calendar full of |qualified calls.|', label: 'Three funnels' },
+                       { value: 'We build your funnel and run the ads, |so qualified calls book themselves.|', label: 'Build + run' },
+                       { value: 'Turn ad spend into |qualified, booked calls.|', label: 'Booked calls' },
+                     ]}
+                     onChange={(v) => setTweak('headline', v)} />
         <TweakText label="Headline" value={t.headline}
                    placeholder="Use | | to wrap the italic accent"
                    onChange={(v) => setTweak('headline', v)} />
@@ -86,14 +86,14 @@ function App() {
         <TweakSection label="Accent presets" />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 6 }}>
           {[
-            ['#5BFF8F', 'Mint'],
-            ['#B8FF45', 'Lime'],
-            ['#7CC2FF', 'Ice'],
-            ['#FF6A3D', 'Heat'],
-            ['#E6E6E6', 'Steel'],
+            ['#2A6FDB', 'Blue'],
+            ['#179A52', 'Green'],
+            ['#6D4ADB', 'Violet'],
+            ['#0E8C8C', 'Teal'],
+            ['#D9622B', 'Orange'],
           ].map(([c]) => (
             <button key={c} onClick={() => setTweak('accent', c)}
-              style={{ height: 22, borderRadius: 6, border: '.5px solid rgba(0,0,0,.1)', background: c, cursor: 'pointer' }}
+              style={{ height: 22, borderRadius: 6, border: '.5px solid rgba(0,0,0,.12)', background: c, cursor: 'pointer' }}
               aria-label={c} />
           ))}
         </div>
