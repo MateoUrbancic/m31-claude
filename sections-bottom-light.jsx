@@ -1054,7 +1054,7 @@ Object.assign(window, { Process, Cases, Testimonials, FunnelTypes, Founder, Fit,
 function StaticAds() {
   const ads = [
     { id: 'nicead',       title: '$2M/mo on Meta ads' },
-    { id: 'ad-129k',      title: '$129K winning static' },
+    { id: 'win-129k',     title: '$129K winning static' },
     { id: 'discord',      title: '4.22 ROAS proof' },
     { id: 'spencerx',     title: 'X post · 13 winning ads' },
     { id: 'shaunx',       title: 'X post · drag-and-drop' },
@@ -1062,7 +1062,7 @@ function StaticAds() {
     { id: 'founderletter',title: 'Founder letter' },
     { id: 'notepad',      title: 'Notepad · how it works' },
     { id: 'proven13',     title: '13 proven templates' },
-  ].map((a) => ({ ...a, base: 'assets/ads/' + a.id, tag: 'STATIC AD' }));
+  ].map((a) => ({ ...a, base: 'assets/creatives/' + a.id, tag: 'STATIC AD' }));
 
   const conceptAds = [
     { id: 'rh1',   title: 'Rich Habits · SpaceX & OpenAI' },
@@ -1089,7 +1089,7 @@ function StaticAds() {
     { id: 'pvw1',  title: 'Stuck at $100K–$1M?' },
     { id: 'pvw2',  title: 'The modern way to scale' },
     { id: 'pvw3',  title: '$1M pipeline workshop' },
-  ].map((a) => ({ ...a, base: 'assets/ads/concept/' + a.id, tag: 'CONCEPT' }));
+  ].map((a) => ({ ...a, base: 'assets/creatives/concept/' + a.id, tag: 'CONCEPT' }));
 
   const [open, setOpen] = useState(null);
 
@@ -1103,10 +1103,10 @@ function StaticAds() {
   }, [open]);
 
   const Tile = (a, i) => (
-    <button key={i} className="ad-tile" onClick={() => setOpen(a)} aria-label={'View ' + a.title} aria-hidden={a._dup}>
-      <div className="ad-thumb">
+    <button key={i} className="cr-tile" onClick={() => setOpen(a)} aria-label={'View ' + a.title} aria-hidden={a._dup}>
+      <div className="cr-thumb">
         <img src={a.base + '-thumb.jpg'} alt={a.title} loading="lazy" />
-        <span className="ad-zoom">
+        <span className="cr-zoom">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.6"/><path d="M11 11L14.5 14.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
         </span>
       </div>
@@ -1114,7 +1114,7 @@ function StaticAds() {
   );
 
   return (
-    <section id="ads" style={{ background: 'var(--bg-2)' }}>
+    <section id="creatives" style={{ background: 'var(--bg-2)' }}>
       <div className="container">
         <SectionHead
           num="05" kicker="STATIC ADS WE'VE RUN"
@@ -1127,8 +1127,8 @@ function StaticAds() {
         </Reveal>
       </div>
 
-      <div className="ads-marquee">
-        <div className="ads-track">
+      <div className="cr-marquee">
+        <div className="cr-track">
           {[...ads, ...ads].map((a, i) => Tile({ ...a, _dup: i >= ads.length }, i))}
         </div>
       </div>
@@ -1143,8 +1143,8 @@ function StaticAds() {
         </div>
       </div>
 
-      <div className="ads-marquee" style={{ marginTop: 'clamp(20px, 2.4vw, 32px)' }}>
-        <div className="ads-track ads-track--rev">
+      <div className="cr-marquee" style={{ marginTop: 'clamp(20px, 2.4vw, 32px)' }}>
+        <div className="cr-track cr-track--rev">
           {[...conceptAds, ...conceptAds].map((a, i) => Tile({ ...a, _dup: i >= conceptAds.length }, 'c' + i))}
         </div>
       </div>
@@ -1154,7 +1154,7 @@ function StaticAds() {
           <button className="funnel-close" onClick={() => setOpen(null)} aria-label="Close">
             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
           </button>
-          <div className="ads-lightbox-inner" onClick={(e) => e.stopPropagation()}>
+          <div className="cr-lightbox-inner" onClick={(e) => e.stopPropagation()}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.6)', textAlign: 'center', marginBottom: 14 }}>
               {open.tag} &middot; {open.title.toUpperCase()}
             </div>
@@ -1164,32 +1164,32 @@ function StaticAds() {
       )}
 
       <style>{`
-        .ads-marquee { position: relative; overflow: hidden; }
-        .ads-marquee::before, .ads-marquee::after {
+        .cr-marquee { position: relative; overflow: hidden; }
+        .cr-marquee::before, .cr-marquee::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: clamp(24px, 6vw, 90px); z-index: 2; pointer-events: none;
         }
-        .ads-marquee::before { left: 0; background: linear-gradient(90deg, var(--bg-2), rgba(246,247,249,0)); }
-        .ads-marquee::after  { right: 0; background: linear-gradient(270deg, var(--bg-2), rgba(246,247,249,0)); }
-        .ads-track {
+        .cr-marquee::before { left: 0; background: linear-gradient(90deg, var(--bg-2), rgba(246,247,249,0)); }
+        .cr-marquee::after  { right: 0; background: linear-gradient(270deg, var(--bg-2), rgba(246,247,249,0)); }
+        .cr-track {
           display: flex; gap: clamp(14px, 1.6vw, 22px); width: max-content;
           padding: 6px var(--pad-x);
-          animation: adsMarquee 55s linear infinite;
+          animation: crMarquee 55s linear infinite;
         }
-        .ads-track--rev { animation: adsMarqueeRev 80s linear infinite; }
-        .ads-marquee:hover .ads-track { animation-play-state: paused; }
-        @keyframes adsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes adsMarqueeRev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-        .ad-tile { flex: 0 0 auto; width: clamp(210px, 22vw, 290px); background: none; border: 0; padding: 0; cursor: pointer; }
-        .ad-thumb {
+        .cr-track--rev { animation: crMarqueeRev 80s linear infinite; }
+        .cr-marquee:hover .cr-track { animation-play-state: paused; }
+        @keyframes crMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes crMarqueeRev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        .cr-tile { flex: 0 0 auto; width: clamp(210px, 22vw, 290px); background: none; border: 0; padding: 0; cursor: pointer; }
+        .cr-thumb {
           position: relative; aspect-ratio: 1 / 1; overflow: hidden;
           border-radius: 14px; border: 1px solid var(--line);
           background: #fff;
           box-shadow: 0 6px 20px rgba(11,13,16,0.06);
           transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s;
         }
-        .ad-tile:hover .ad-thumb { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(11,13,16,0.14); border-color: var(--accent); }
-        .ad-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-        .ad-zoom {
+        .cr-tile:hover .cr-thumb { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(11,13,16,0.14); border-color: var(--accent); }
+        .cr-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+        .cr-zoom {
           position: absolute; bottom: 10px; right: 10px;
           width: 32px; height: 32px; border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
@@ -1197,10 +1197,10 @@ function StaticAds() {
           -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
           opacity: 0; transform: scale(0.8); transition: opacity .25s, transform .25s;
         }
-        .ad-tile:hover .ad-zoom { opacity: 1; transform: scale(1); }
-        @media (prefers-reduced-motion: reduce) { .ads-track { animation: none; flex-wrap: wrap; } }
-        .ads-lightbox-inner { max-width: 540px; margin: 0 auto; }
-        .ads-lightbox-inner img {
+        .cr-tile:hover .cr-zoom { opacity: 1; transform: scale(1); }
+        @media (prefers-reduced-motion: reduce) { .cr-track { animation: none; flex-wrap: wrap; } }
+        .cr-lightbox-inner { max-width: 540px; margin: 0 auto; }
+        .cr-lightbox-inner img {
           width: 100%; display: block; border-radius: 16px;
           box-shadow: 0 30px 80px rgba(0,0,0,0.5); background: #fff;
         }
