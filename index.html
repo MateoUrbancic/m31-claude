@@ -20,13 +20,14 @@
 
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="bg-texture.jsx"></script>
 <script type="text/babel" src="sections-top-light.jsx"></script>
 <script type="text/babel" src="sections-bottom-light.jsx"></script>
 
 <script type="text/babel" data-presets="react">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#2A6FDB",
-  "headline": "We'll build you an extremely profitable paid ads acquisition system |in 21 days or less.|",
+  "headline": "We build extremely profitable paid ads acquisition systems |in 21 days or less.|",
   "density": "regular",
   "showMarquee": true,
   "showFounder": true
@@ -69,7 +70,7 @@ function App() {
         <TweakSection label="Hero copy" />
         <TweakSelect label="Hook" value={t.headline}
                      options={[
-                       { value: "We'll build you an extremely profitable paid ads acquisition system |in 21 days or less.|", label: '21 days' },
+                       { value: "We build extremely profitable paid ads acquisition systems |in 21 days or less.|", label: '21 days' },
                        { value: 'Three funnels. Our ads. A calendar full of |qualified calls.|', label: 'Three funnels' },
                        { value: 'We build your funnel and run the ads, |so qualified calls book themselves.|', label: 'Build + run' },
                        { value: 'Turn ad spend into |qualified, booked calls.|', label: 'Booked calls' },

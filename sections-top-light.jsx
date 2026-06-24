@@ -28,10 +28,11 @@ function Nav({ accent }) {
 
 function Hero({ headline }) {
   return (
-    <section id="top" style={{ paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
+    <section id="top" style={{ position: 'relative', overflow: 'hidden', paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
+      <BgTexture />
       <div className="glow" style={{ width: 720, height: 720, top: -200, left: '50%', transform: 'translateX(-50%)', opacity: 0.22 }} />
 
-      <div className="container" style={{ position: 'relative' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
 
         <Reveal delay={80}>

@@ -239,3 +239,31 @@ body[data-density="airy"]    { --section-y: clamp(110px, 12vw, 200px); }
 
 /* Bordered divider used as section separators (Swiss vibe) */
 .rule { height: 1px; background: var(--line); }
+
+/* Background texture: faint performance-marketing motifs ---------- */
+.bg-texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-tex-item {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--ink);
+  mix-blend-mode: multiply;
+}
+.bg-tex-item.is-accent { color: var(--accent); }
+.bg-tex-item.is-green { color: #1F8A5B; }
+.bg-tex-item svg { opacity: 0.9; }
+@media (max-width: 760px) {
+  .bg-tex-item { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .bg-texture { display: none; }
+}
