@@ -38,7 +38,7 @@ function Hero({ headline }) {
         <Reveal delay={80}>
           <h1 style={{ textAlign: 'center', maxWidth: '22ch', margin: '0 auto', fontSize: 'clamp(42px, 6.5vw, 80px)', lineHeight: 1.15 }}>
             {headline.split('|').map((part, i) =>
-            i === 1 ?
+            i % 2 === 1 ?
             <span key={i} className="italic-disp" style={{ color: 'var(--accent)' }}>{part}</span> :
             <span key={i}>{part}</span>
             )}
