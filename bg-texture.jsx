@@ -52,8 +52,9 @@ function BgTexture() {
   ];
 
   const glyph = (g) => ({ spark: <Spark />, bars: <Bars />, trend: <TrendUp />, funnel: <Funnel />, cursor: <Cursor /> }[g] || null);
-  const base = { a: 0.13, g: 0.13 };  // faded; ink default below
+  const base = { a: 0.27, g: 0.27 };  // faded; ink default below
   const cls = { a: ' is-accent', g: ' is-green' };
+  const floatName = ['bgFloatA', 'bgFloatB', 'bgFloatC'];  // staggered drift variants
 
   return (
     <div className="bg-texture" aria-hidden="true">
@@ -66,7 +67,10 @@ function BgTexture() {
             top: it.y + '%',
             transform: 'translate(-50%, -50%) rotate(' + it.r + 'deg)',
             fontSize: it.s ? it.s + 'px' : undefined,
-            opacity: (it.c ? base[it.c] : 0.09) * it.o,
+            opacity: (it.c ? base[it.c] : 0.20) * it.o,
+            animationName: floatName[i % 3],
+            animationDuration: (5.5 + (i % 4) * 1.1) + 's',
+            animationDelay: (-(i * 0.8)).toFixed(1) + 's',
           }}
         >
           {it.g ? glyph(it.g) : it.t}

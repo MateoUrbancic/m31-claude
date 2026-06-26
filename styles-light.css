@@ -257,10 +257,33 @@ body[data-density="airy"]    { --section-y: clamp(110px, 12vw, 200px); }
   white-space: nowrap;
   color: var(--ink);
   mix-blend-mode: multiply;
+  /* gentle drift; per-item name/duration/delay set inline in bg-texture.jsx.
+     Uses the individual `translate`/`rotate` props so it composes with the
+     centering `transform` on each item rather than overriding it. */
+  animation-name: bgFloatA;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: translate;
 }
 .bg-tex-item.is-accent { color: var(--accent); }
 .bg-tex-item.is-green { color: #1F8A5B; }
 .bg-tex-item svg { opacity: 0.9; }
+@keyframes bgFloatA {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -24px; }
+}
+@keyframes bgFloatB {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 13px 18px; }
+}
+@keyframes bgFloatC {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50%      { translate: -12px -16px; rotate: 5deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-tex-item { animation: none; }
+}
 @media (max-width: 760px) {
   .bg-tex-item { font-size: 12px; }
 }
