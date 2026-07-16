@@ -45,6 +45,23 @@ function Hero({ headline }) {
           </h1>
         </Reveal>
 
+        <Reveal delay={120} style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(16px, 1.9vw, 26px)' }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 9,
+            padding: '9px 18px', borderRadius: 999,
+            border: '1px solid rgba(42,111,219,0.30)',
+            background: 'rgba(42,111,219,0.07)',
+            color: 'var(--accent)', textAlign: 'center',
+            fontSize: 'clamp(13.5px, 1.2vw, 15.5px)', fontWeight: 500, letterSpacing: '-0.005em'
+          }}>
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M9 1.5 L15 4 V8.5 C15 12.5 12.4 15 9 16.5 C5.6 15 3 12.5 3 8.5 V4 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+              <path d="M6.4 9 L8.2 10.8 L11.6 7.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Guaranteed ROI or Your Money Back
+          </span>
+        </Reveal>
+
         <Reveal delay={160}>
           <p style={{
             textAlign: 'center', maxWidth: 660, margin: '32px auto 0',
