@@ -58,24 +58,12 @@ function RotatingWord({ words, interval = 1800 }) {
 
   return (
     <>
-      <span ref={wrapRef} aria-hidden="true" style={{
-        display: 'inline-grid', justifyItems: 'center',
-        width: w == null ? undefined : w,
-        transition: 'width .32s cubic-bezier(.2,.7,.2,1)',
-      }}>
-        {words.map((word, i) => {
-          const active = i === state.idx;
-          const leaving = i === state.prev;
-          return (
-            <span key={i} style={{
-              gridArea: '1 / 1',
-              whiteSpace: 'nowrap',
-              opacity: active ? 1 : 0,
-              transform: active ? 'translateY(0)' : leaving ? 'translateY(-0.22em)' : 'translateY(0.22em)',
-              transition: 'opacity .28s ease, transform .28s ease',
-            }}>{word}</span>
-          );
-        })}
+      {/* Styling lives in styles-light.css (.rot-slot / .rot-word) so the
+          mobile breakpoint can restyle it: own row + accent chip + exit-right. */}
+      <span ref={wrapRef} aria-hidden="true" className="rot-slot" style={{ width: w == null ? undefined : w }}>
+        {words.map((word, i) => (
+          <span key={i} className={'rot-word' + (i === state.idx ? ' is-on' : i === state.prev ? ' is-out' : '')}>{word}</span>
+        ))}
       </span>
       <span style={{ position: 'absolute', width: 1, height: 1, margin: -1, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap', border: 0 }}>
         {words.join(' / ')}

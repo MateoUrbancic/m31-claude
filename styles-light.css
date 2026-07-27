@@ -240,6 +240,46 @@ body[data-density="airy"]    { --section-y: clamp(110px, 12vw, 200px); }
 /* Bordered divider used as section separators (Swiss vibe) */
 .rule { height: 1px; background: var(--line); }
 
+/* Rotating headline word ------------------------------------------ */
+.rot-slot {
+  display: inline-grid;
+  justify-items: center;
+  transition: width .32s cubic-bezier(.2,.7,.2,1);
+}
+.rot-word {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(0.22em);
+  transition: opacity .28s ease, transform .28s ease;
+}
+.rot-word.is-on  { opacity: 1; transform: translateY(0); }
+.rot-word.is-out { opacity: 0; transform: translateY(-0.22em); }
+
+/* Mobile: the system word gets its own row as an accent chip, and the
+   outgoing word slides off the right edge of the screen. */
+@media (max-width: 600px) {
+  .rot-slot {
+    display: grid;
+    width: auto !important;      /* neutralise the JS width-morph (desktop-only) */
+    justify-items: center;
+    margin: 0.14em auto 0.1em;
+  }
+  .rot-word {
+    background: var(--accent);
+    color: #FFFFFF;
+    padding: 0.04em 0.45em 0.12em;
+    border-radius: 0.2em;
+    transform: translateX(-12vw);  /* incoming waits slightly off to the left */
+    transition: opacity .34s ease, transform .38s cubic-bezier(.4,.1,.3,1);
+  }
+  .rot-word.is-on  { opacity: 1; transform: translateX(0); }
+  .rot-word.is-out { opacity: 0; transform: translateX(72vw); }  /* vanish right */
+}
+@media (prefers-reduced-motion: reduce) {
+  .rot-slot, .rot-word { transition: none; }
+}
+
 /* Background texture: faint performance-marketing motifs ---------- */
 .bg-texture {
   position: absolute;
