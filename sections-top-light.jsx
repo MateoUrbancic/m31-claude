@@ -119,7 +119,7 @@ function Hero({ headline }) {
               <path d="M9 1.5 L15 4 V8.5 C15 12.5 12.4 15 9 16.5 C5.6 15 3 12.5 3 8.5 V4 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
               <path d="M6.4 9 L8.2 10.8 L11.6 7.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Guaranteed 3X ROAS or You Don&rsquo;t Pay
+            Guaranteed 3X ROI or You Don&rsquo;t Pay
           </span>
         </Reveal>
 
