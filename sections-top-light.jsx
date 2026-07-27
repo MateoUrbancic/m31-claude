@@ -26,6 +26,79 @@ function Nav({ accent }) {
 
 }
 
+// RotatingWord — cycles through words on a timer. Words are stacked in one
+// inline-grid cell; the slot's width is measured from the ACTIVE word and
+// morphs smoothly between words, so short words don't sit in a wide gap.
+// Old word exits upward, new word enters from below. Visual rotator is
+// aria-hidden; an sr-only span carries the static list for screen readers.
+function RotatingWord({ words, interval = 1800 }) {
+  const [state, setState] = useState({ idx: 0, prev: null });
+  const [w, setW] = useState(null);
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setState((s) => ({ idx: (s.idx + 1) % words.length, prev: s.idx }));
+    }, interval);
+    return () => clearInterval(id);
+  }, [words.length, interval]);
+
+  // Size the slot to the active word; re-measure when webfonts finish loading
+  // and on viewport resize (the h1 font-size is viewport-relative).
+  React.useLayoutEffect(() => {
+    const measure = () => {
+      const el = wrapRef.current && wrapRef.current.children[state.idx];
+      if (el) setW(Math.ceil(el.getBoundingClientRect().width));
+    };
+    measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [state.idx, words]);
+
+  return (
+    <>
+      <span ref={wrapRef} aria-hidden="true" style={{
+        display: 'inline-grid', justifyItems: 'center',
+        width: w == null ? undefined : w,
+        transition: 'width .32s cubic-bezier(.2,.7,.2,1)',
+      }}>
+        {words.map((word, i) => {
+          const active = i === state.idx;
+          const leaving = i === state.prev;
+          return (
+            <span key={i} style={{
+              gridArea: '1 / 1',
+              whiteSpace: 'nowrap',
+              opacity: active ? 1 : 0,
+              transform: active ? 'translateY(0)' : leaving ? 'translateY(-0.22em)' : 'translateY(0.22em)',
+              transition: 'opacity .28s ease, transform .28s ease',
+            }}>{word}</span>
+          );
+        })}
+      </span>
+      <span style={{ position: 'absolute', width: 1, height: 1, margin: -1, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap', border: 0 }}>
+        {words.join(' / ')}
+      </span>
+    </>
+  );
+}
+
+// Renders a headline segment, expanding {a~b~c} tokens into RotatingWord slots
+// styled with the accent italic treatment.
+function renderHeadlinePart(part) {
+  return part.split(/(\{[^}]+\})/).map((bit, j) => {
+    const m = bit.match(/^\{([^}]+)\}$/);
+    return m ? (
+      <span key={j} className="italic-disp" style={{ color: 'var(--accent)' }}>
+        <RotatingWord words={m[1].split('~')} />
+      </span>
+    ) : (
+      <React.Fragment key={j}>{bit}</React.Fragment>
+    );
+  });
+}
+
 function Hero({ headline }) {
   return (
     <section id="top" style={{ position: 'relative', overflow: 'hidden', paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
@@ -39,8 +112,8 @@ function Hero({ headline }) {
           <h1 style={{ textAlign: 'center', maxWidth: '22ch', margin: '0 auto', fontSize: 'clamp(42px, 6.5vw, 80px)', lineHeight: 1.15 }}>
             {headline.split('|').map((part, i) =>
             i % 2 === 1 ?
-            <span key={i} className="italic-disp" style={{ color: 'var(--accent)' }}>{part}</span> :
-            <span key={i}>{part}</span>
+            <span key={i} className="italic-disp" style={{ color: 'var(--accent)' }}>{renderHeadlinePart(part)}</span> :
+            <span key={i}>{renderHeadlinePart(part)}</span>
             )}
           </h1>
         </Reveal>
@@ -58,7 +131,7 @@ function Hero({ headline }) {
               <path d="M9 1.5 L15 4 V8.5 C15 12.5 12.4 15 9 16.5 C5.6 15 3 12.5 3 8.5 V4 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
               <path d="M6.4 9 L8.2 10.8 L11.6 7.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Guaranteed ROI or You Don&rsquo;t Pay
+            Guaranteed 3X ROAS or You Don&rsquo;t Pay
           </span>
         </Reveal>
 
