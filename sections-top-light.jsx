@@ -87,6 +87,52 @@ function renderHeadlinePart(part) {
   });
 }
 
+// HeroVSL — Vidalytics player. The bootstrap runs in useEffect so the target
+// div is guaranteed to exist before the loader tries to mount the player.
+function HeroVSL() {
+  useEffect(() => {
+    (function (v, i, d, a, l, y, t, c, s) {
+      y = '_' + d.toLowerCase(); c = d + 'L';
+      if (!v[d]) { v[d] = {}; }
+      if (!v[c]) { v[c] = {}; }
+      if (!v[y]) { v[y] = {}; }
+      var vl = 'Loader', vli = v[y][vl], vsl = v[c][vl + 'Script'], vlf = v[c][vl + 'Loaded'], ve = 'Embed';
+      if (!vsl) {
+        vsl = function (u, cb) {
+          if (t) { cb(); return; }
+          s = i.createElement('script'); s.type = 'text/javascript'; s.async = 1; s.src = u;
+          if (s.readyState) {
+            s.onreadystatechange = function () {
+              if (s.readyState === 'loaded' || s.readyState == 'complete') { s.onreadystatechange = null; vlf = 1; cb(); }
+            };
+          } else {
+            s.onload = function () { vlf = 1; cb(); };
+          }
+          i.getElementsByTagName('head')[0].appendChild(s);
+        };
+      }
+      vsl(l + 'loader.min.js', function () {
+        if (!vli) { var vlc = v[c][vl]; vli = new vlc(); }
+        vli.loadScript(l + 'player.min.js', function () { var vec = v[d][ve]; t = new vec(); t.run(a); });
+      });
+    })(window, document, 'Vidalytics', 'vidalytics_embed_4C82wuZl8_lIneoQ', 'https://fast.vidalytics.com/embeds/a2MBXTxt/4C82wuZl8_lIneoQ/');
+  }, []);
+
+  return (
+    <Reveal delay={400}>
+      <div style={{
+        maxWidth: 860, margin: 'clamp(36px, 4.5vw, 60px) auto 0',
+        borderRadius: 18, overflow: 'hidden',
+        border: '1px solid var(--line-2)',
+        boxShadow: '0 24px 60px rgba(11,13,16,0.14)',
+        background: '#000',
+      }}>
+        <div id="vidalytics_embed_4C82wuZl8_lIneoQ" style={{ width: '100%', position: 'relative', paddingTop: '56.25%' }} />
+      </div>
+    </Reveal>
+  );
+}
+
 function Hero({ headline }) {
   return (
     <section id="top" style={{ position: 'relative', overflow: 'hidden', paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
@@ -141,6 +187,8 @@ function Hero({ headline }) {
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> Ads + creative managed in-house</span>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> Built for $15k+ client LTV</span>
         </Reveal>
+
+        <HeroVSL />
       </div>
     </section>);
 
