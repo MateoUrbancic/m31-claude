@@ -188,7 +188,7 @@ function Hero({ headline }) {
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> Built for $15k+ client LTV</span>
         </Reveal>
 
-        <HeroVSL />
+        {/* VSL temporarily removed — re-enable by rendering <HeroVSL /> here. */}
       </div>
     </section>);
 
