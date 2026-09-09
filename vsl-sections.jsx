@@ -11,7 +11,7 @@ function VslNav() {
       <div className="nav-links">
         <a href="#why">How it works</a><a href="#process">Process</a><a href="#cases">Results</a><a href="#packages">Packages</a><a href="#faq">FAQ</a>
       </div>
-      <a href="#top" className="btn btn-primary btn-sm nav-cta">Book a call <Arrow size={14} /></a>
+      <a href="#book" className="btn btn-primary btn-sm nav-cta">Book a call <Arrow size={14} /></a>
     </div></nav>
   );
 }
@@ -59,7 +59,7 @@ function VslHero() {
         </Reveal>
         <Reveal delay={160}><p className="v-sub">And the best part? It takes about <strong>3 hours of your time</strong> in total. Watch the video to see exactly how it works.</p></Reveal>
         <Reveal delay={240}><VslVideo /></Reveal>
-        <Reveal delay={300} className="v-hero-cal-wrap">
+        <Reveal delay={300} className="v-hero-cal-wrap" id="book">
           <div className="v-hero-cal-head">
             <span className="eyebrow"><span className="dot" />NEXT STEP</span>
             <h2>Book a discovery call <Ital>with me.</Ital></h2>
