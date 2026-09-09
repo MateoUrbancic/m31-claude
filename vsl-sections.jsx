@@ -268,7 +268,7 @@ function WhatWeDo() {
   return (
     <section id="what-we-do">
       <div className="container">
-        <SectionHead num="03" kicker="WHAT WE DO FOR YOU" title={<>You record the ADS &amp; VSL. <Ital>We do everything else.</Ital></>} />
+        <SectionHead num="03" kicker="WHAT WE DO FOR YOU" title={<>You just record the ADS &amp; VSL. <Ital>We do everything else.</Ital></>} />
         <Reveal><p className="v-lead">Here is every piece that goes into your VSL funnel, who does it, and the one thing we need from you.</p></Reveal>
         <div className="v-wwd">
           <div className="v-wwd-col is-us">
@@ -301,9 +301,6 @@ function WhatWeDo() {
             </div>
           </Reveal>
         </div>
-        <Reveal delay={160} style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(32px, 4vw, 48px)' }}>
-          <a href="#book" className="btn btn-primary">Book a call <Arrow /></a>
-        </Reveal>
       </div>
     </section>
   );
