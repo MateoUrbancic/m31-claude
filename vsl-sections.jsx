@@ -269,7 +269,7 @@ function WhatWeDo() {
   return (
     <section id="what-we-do">
       <div className="container">
-        <SectionHead num="03" kicker="WHAT WE DO FOR YOU" title={<>We build the entire system. <Ital>You show up once.</Ital></>} />
+        <SectionHead num="03" kicker="WHAT WE DO FOR YOU" title={<>You record the ads &amp; VSL for 3 hours. <Ital>We do the rest.</Ital></>} />
         <Reveal><p className="v-lead">Here is every piece that goes into your VSL funnel, who does it, and the one thing we need from you.</p></Reveal>
         <div className="v-wwd">
           <div className="v-wwd-col is-us">
