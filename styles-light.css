@@ -237,48 +237,62 @@ section { padding: var(--section-y) 0; position: relative; }
 body[data-density="tight"]   { --section-y: clamp(56px, 6vw, 110px); }
 body[data-density="airy"]    { --section-y: clamp(110px, 12vw, 200px); }
 
+/* Hero ------------------------------------------------------------ */
+.hero { padding-top: clamp(120px, 16vw, 220px); padding-bottom: clamp(56px, 7vw, 100px); }
+.hero-h1 { text-align: center; max-width: 21ch; margin: 0 auto; font-size: clamp(34px, 5.6vw, 68px); line-height: 1.18; letter-spacing: -0.03em; text-wrap: balance; }
+.hero-h1 .italic-disp { font-size: 1.04em; }
+.hl-roi { position: relative; display: inline-block; color: var(--accent); font-style: italic; font-family: 'Instrument Serif', serif; font-size: 1.04em; letter-spacing: -0.01em; white-space: nowrap; }
+.hl-roi svg { position: absolute; left: 2%; right: 2%; width: 96%; bottom: -0.08em; height: 0.14em; color: var(--accent); opacity: 0.55; }
+.rw-pill {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  vertical-align: baseline;
+  background: linear-gradient(135deg, var(--accent) 0%, oklch(from var(--accent) calc(l - 0.12) c h) 100%);
+  color: #fff;
+  border-radius: 0.24em;
+  padding: 0.02em 0.3em 0.09em;
+  line-height: 1.05;
+  overflow: hidden;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 10px 28px rgba(42,111,219,0.32), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.rw-sizer { visibility: hidden; white-space: nowrap; }
+.rw-word { position: absolute; left: 50%; top: 50%; translate: -50% -54%; white-space: nowrap; }
+.rw-word.rw-in  { animation: rwIn .34s cubic-bezier(.2,.7,.2,1); }
+.rw-word.rw-out { animation: rwOut .32s cubic-bezier(.6,0,.8,.4) forwards; }
+@keyframes rwIn  { from { transform: translateY(0.9em); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes rwOut { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-0.9em); opacity: 0; } }
+.hero-guarantee {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.01em;
+  color: var(--ink-2);
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--line-2);
+  padding: 9px 18px; border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(11,13,16,0.07);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.hero-guarantee svg { color: var(--accent); flex-shrink: 0; }
+.hero-sub {
+  text-align: center; max-width: 640px; margin: clamp(20px, 2.6vw, 30px) auto 0;
+  font-size: clamp(15.5px, 1.4vw, 19px); color: var(--ink-2); line-height: 1.6;
+  text-wrap: pretty;
+}
+.hero-ctas { display: flex; justify-content: center; gap: 12px; margin-top: clamp(28px, 3.4vw, 40px); flex-wrap: wrap; }
+.hero-trust { display: flex; justify-content: center; gap: 10px 24px; margin-top: clamp(20px, 2.6vw, 30px); flex-wrap: wrap; color: var(--ink-3); font-size: 13px; }
+.hero-trust > span { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 600px) {
+  .hero { padding-top: 108px; }
+  .hero-h1 { font-size: clamp(31px, 9.4vw, 40px); line-height: 1.18; }
+  .hero-sub { font-size: 15px; color: var(--ink-2); max-width: 34ch; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; margin-left: 8px; margin-right: 8px; }
+  .hero-ctas .btn { width: 100%; justify-content: center; padding: 15px 24px; }
+  .hero-trust { flex-direction: column; align-items: center; gap: 8px; font-size: 12.5px; }
+  .hero-guarantee { font-size: 11px; padding: 8px 13px; max-width: 92%; white-space: normal; text-align: left; line-height: 1.45; }
+}
+
 /* Bordered divider used as section separators (Swiss vibe) */
 .rule { height: 1px; background: var(--line); }
-
-/* Rotating headline word ------------------------------------------ */
-.rot-slot {
-  display: inline-grid;
-  justify-items: center;
-  transition: width .32s cubic-bezier(.2,.7,.2,1);
-}
-.rot-word {
-  grid-area: 1 / 1;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(0.22em);
-  transition: opacity .28s ease, transform .28s ease;
-}
-.rot-word.is-on  { opacity: 1; transform: translateY(0); }
-.rot-word.is-out { opacity: 0; transform: translateY(-0.22em); }
-
-/* Mobile: the system word gets its own row as an accent chip, and the
-   outgoing word slides off the right edge of the screen. */
-@media (max-width: 600px) {
-  .rot-slot {
-    display: grid;
-    width: auto !important;      /* neutralise the JS width-morph (desktop-only) */
-    justify-items: center;
-    margin: 0.14em auto 0.1em;
-  }
-  .rot-word {
-    background: var(--accent);
-    color: #FFFFFF;
-    padding: 0.04em 0.45em 0.12em;
-    border-radius: 0.2em;
-    transform: translateX(-12vw);  /* incoming waits slightly off to the left */
-    transition: opacity .34s ease, transform .38s cubic-bezier(.4,.1,.3,1);
-  }
-  .rot-word.is-on  { opacity: 1; transform: translateX(0); }
-  .rot-word.is-out { opacity: 0; transform: translateX(72vw); }  /* vanish right */
-}
-@media (prefers-reduced-motion: reduce) {
-  .rot-slot, .rot-word { transition: none; }
-}
 
 /* Background texture: faint performance-marketing motifs ---------- */
 .bg-texture {
@@ -297,33 +311,10 @@ body[data-density="airy"]    { --section-y: clamp(110px, 12vw, 200px); }
   white-space: nowrap;
   color: var(--ink);
   mix-blend-mode: multiply;
-  /* gentle drift; per-item name/duration/delay set inline in bg-texture.jsx.
-     Uses the individual `translate`/`rotate` props so it composes with the
-     centering `transform` on each item rather than overriding it. */
-  animation-name: bgFloatA;
-  animation-duration: 8s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  will-change: translate;
 }
 .bg-tex-item.is-accent { color: var(--accent); }
 .bg-tex-item.is-green { color: #1F8A5B; }
 .bg-tex-item svg { opacity: 0.9; }
-@keyframes bgFloatA {
-  0%, 100% { translate: 0 0; }
-  50%      { translate: 0 -24px; }
-}
-@keyframes bgFloatB {
-  0%, 100% { translate: 0 0; }
-  50%      { translate: 13px 18px; }
-}
-@keyframes bgFloatC {
-  0%, 100% { translate: 0 0; rotate: 0deg; }
-  50%      { translate: -12px -16px; rotate: 5deg; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bg-tex-item { animation: none; }
-}
 @media (max-width: 760px) {
   .bg-tex-item { font-size: 12px; }
 }

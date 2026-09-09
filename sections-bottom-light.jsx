@@ -71,7 +71,7 @@ function Process() {
   );
 }
 
-function Cases() {
+function Cases({ num = '03', kicker = 'CASE STUDIES · REAL RESULTS', title }) {
   const [open, setOpen] = useState(null);
   
   const cases = [
@@ -169,8 +169,8 @@ function Cases() {
     <section id="cases">
       <div className="container">
         <SectionHead
-          num="03" kicker="CASE STUDIES · REAL RESULTS"
-          title={<>Proof the <span className="italic-disp" style={{ color: 'var(--accent)' }}>system works.</span></>}
+          num={num} kicker={kicker}
+          title={title || <>Proof the <span className="italic-disp" style={{ color: 'var(--accent)' }}>system works.</span></>}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           {cases.map((c, i) => (
@@ -839,7 +839,7 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
+function Footer({ blurb }) {
   return (
     <footer style={{ borderTop: '1px solid var(--line)', padding: '56px 0 32px' }}>
       <div className="container">
@@ -850,7 +850,7 @@ function Footer() {
               <span style={{ fontWeight: 600, fontSize: 18, letterSpacing: '-0.02em' }}>Marketing<span style={{ color: 'var(--accent)' }}>31</span></span>
             </div>
             <p style={{ color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6, maxWidth: '40ch' }}>
-              Done-for-you VSL, webinar, and low-ticket funnels, built and powered by ads we run in-house. For businesses with a client worth $15k or more.
+              {blurb || 'Done-for-you VSL, webinar, and low-ticket funnels, built and powered by ads we run in-house. For businesses with a client worth $15k or more.'}
             </p>
           </div>
           {[
@@ -876,7 +876,7 @@ function Footer() {
   );
 }
 
-function FunnelShowcase() {
+function FunnelShowcase({ num = '04', title }) {
   const funnels = [
     { id: 'kart',     title: 'Ultimate Kart Academy',      tag: 'VSL FUNNEL' },
     { id: 'easya-a',  title: '13 Winning Ad Templates',    tag: 'LOW-TICKET FUNNEL' },
@@ -905,8 +905,8 @@ function FunnelShowcase() {
     <section id="funnels">
       <div className="container">
         <SectionHead
-          num="04" kicker="FUNNELS WE'VE BUILT"
-          title={<>Real funnels, <span className="italic-disp" style={{ color: 'var(--accent)' }}>live in the wild.</span></>}
+          num={num} kicker="FUNNELS WE'VE BUILT"
+          title={title || <>Real funnels, <span className="italic-disp" style={{ color: 'var(--accent)' }}>live in the wild.</span></>}
         />
         <Reveal>
           <p style={{ maxWidth: '60ch', marginTop: -24, marginBottom: 'clamp(36px, 4vw, 56px)', fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: 1.65, color: 'var(--ink-2)' }}>
@@ -1051,10 +1051,10 @@ function FunnelShowcase() {
 
 Object.assign(window, { Process, Cases, Testimonials, FunnelTypes, Founder, Fit, FAQ, FinalCTA, Footer, FunnelShowcase, StaticAds });
 
-function StaticAds() {
+function StaticAds({ num = '05' }) {
   const ads = [
     { id: 'nicead',       title: '$2M/mo on Meta ads' },
-    { id: 'win-129k',     title: '$129K winning static' },
+    { id: 'win-129k',      title: '$129K winning static' },
     { id: 'discord',      title: '4.22 ROAS proof' },
     { id: 'spencerx',     title: 'X post · 13 winning ads' },
     { id: 'shaunx',       title: 'X post · drag-and-drop' },
@@ -1117,7 +1117,7 @@ function StaticAds() {
     <section id="creatives" style={{ background: 'var(--bg-2)' }}>
       <div className="container">
         <SectionHead
-          num="05" kicker="STATIC ADS WE'VE RUN"
+          num={num} kicker="STATIC ADS WE'VE RUN"
           title={<>Creative that <span className="italic-disp" style={{ color: 'var(--accent)' }}>stops the scroll.</span></>}
         />
         <Reveal>

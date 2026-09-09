@@ -26,169 +26,60 @@ function Nav({ accent }) {
 
 }
 
-// RotatingWord — cycles through words on a timer. Words are stacked in one
-// inline-grid cell; the slot's width is measured from the ACTIVE word and
-// morphs smoothly between words, so short words don't sit in a wide gap.
-// Old word exits upward, new word enters from below. Visual rotator is
-// aria-hidden; an sr-only span carries the static list for screen readers.
-function RotatingWord({ words, interval = 1800 }) {
-  const [state, setState] = useState({ idx: 0, prev: null });
-  const [w, setW] = useState(null);
-  const wrapRef = useRef(null);
-
+function RotatingWord() {
+  const words = ['VSL', 'Webinar', 'Low-Ticket'];
+  const [idx, setIdx] = useState(0);
+  const [leaving, setLeaving] = useState(false);
   useEffect(() => {
-    const id = setInterval(() => {
-      setState((s) => ({ idx: (s.idx + 1) % words.length, prev: s.idx }));
-    }, interval);
-    return () => clearInterval(id);
-  }, [words.length, interval]);
-
-  // Size the slot to the active word; re-measure when webfonts finish loading
-  // and on viewport resize (the h1 font-size is viewport-relative).
-  React.useLayoutEffect(() => {
-    const measure = () => {
-      const el = wrapRef.current && wrapRef.current.children[state.idx];
-      if (el) setW(Math.ceil(el.getBoundingClientRect().width));
-    };
-    measure();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, [state.idx, words]);
-
-  return (
-    <>
-      {/* Styling lives in styles-light.css (.rot-slot / .rot-word) so the
-          mobile breakpoint can restyle it: own row + accent chip + exit-right. */}
-      <span ref={wrapRef} aria-hidden="true" className="rot-slot" style={{ width: w == null ? undefined : w }}>
-        {words.map((word, i) => (
-          <span key={i} className={'rot-word' + (i === state.idx ? ' is-on' : i === state.prev ? ' is-out' : '')}>{word}</span>
-        ))}
-      </span>
-      <span style={{ position: 'absolute', width: 1, height: 1, margin: -1, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap', border: 0 }}>
-        {words.join(' / ')}
-      </span>
-    </>
-  );
-}
-
-// Renders a headline segment, expanding {a~b~c} tokens into RotatingWord slots
-// styled with the accent italic treatment.
-function renderHeadlinePart(part) {
-  return part.split(/(\{[^}]+\})/).map((bit, j) => {
-    const m = bit.match(/^\{([^}]+)\}$/);
-    return m ? (
-      <span key={j} className="italic-disp" style={{ color: 'var(--accent)' }}>
-        <RotatingWord words={m[1].split('~')} />
-      </span>
-    ) : (
-      <React.Fragment key={j}>{bit}</React.Fragment>
-    );
-  });
-}
-
-// HeroVSL — Vidalytics player. The bootstrap runs in useEffect so the target
-// div is guaranteed to exist before the loader tries to mount the player.
-function HeroVSL() {
-  useEffect(() => {
-    (function (v, i, d, a, l, y, t, c, s) {
-      y = '_' + d.toLowerCase(); c = d + 'L';
-      if (!v[d]) { v[d] = {}; }
-      if (!v[c]) { v[c] = {}; }
-      if (!v[y]) { v[y] = {}; }
-      var vl = 'Loader', vli = v[y][vl], vsl = v[c][vl + 'Script'], vlf = v[c][vl + 'Loaded'], ve = 'Embed';
-      if (!vsl) {
-        vsl = function (u, cb) {
-          if (t) { cb(); return; }
-          s = i.createElement('script'); s.type = 'text/javascript'; s.async = 1; s.src = u;
-          if (s.readyState) {
-            s.onreadystatechange = function () {
-              if (s.readyState === 'loaded' || s.readyState == 'complete') { s.onreadystatechange = null; vlf = 1; cb(); }
-            };
-          } else {
-            s.onload = function () { vlf = 1; cb(); };
-          }
-          i.getElementsByTagName('head')[0].appendChild(s);
-        };
-      }
-      vsl(l + 'loader.min.js', function () {
-        if (!vli) { var vlc = v[c][vl]; vli = new vlc(); }
-        vli.loadScript(l + 'player.min.js', function () { var vec = v[d][ve]; t = new vec(); t.run(a); });
-      });
-    })(window, document, 'Vidalytics', 'vidalytics_embed_4C82wuZl8_lIneoQ', 'https://fast.vidalytics.com/embeds/a2MBXTxt/4C82wuZl8_lIneoQ/');
+    const t = setInterval(() => {
+      setLeaving(true);
+      setTimeout(() => { setIdx((i) => (i + 1) % words.length); setLeaving(false); }, 320);
+    }, 2400);
+    return () => clearInterval(t);
   }, []);
-
   return (
-    <Reveal delay={400}>
-      <div style={{
-        maxWidth: 860, margin: 'clamp(36px, 4.5vw, 60px) auto 0',
-        borderRadius: 18, overflow: 'hidden',
-        border: '1px solid var(--line-2)',
-        boxShadow: '0 24px 60px rgba(11,13,16,0.14)',
-        background: '#000',
-      }}>
-        <div id="vidalytics_embed_4C82wuZl8_lIneoQ" style={{ width: '100%', position: 'relative', paddingTop: '56.25%' }} />
-      </div>
-    </Reveal>
+    <span className="rw-pill">
+      <span className="rw-sizer italic-disp" aria-hidden="true">Low-Ticket</span>
+      <span key={idx} className={'rw-word italic-disp' + (leaving ? ' rw-out' : ' rw-in')}>{words[idx]}</span>
+    </span>
   );
 }
 
-function Hero({ headline }) {
+function Hero() {
   return (
-    <section id="top" style={{ position: 'relative', overflow: 'hidden', paddingTop: 'clamp(140px, 16vw, 220px)', paddingBottom: 'clamp(60px, 7vw, 100px)' }}>
+    <section id="top" className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
       <BgTexture />
       <div className="glow" style={{ width: 720, height: 720, top: -200, left: '50%', transform: 'translateX(-50%)', opacity: 0.22 }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-
-
         <Reveal delay={80}>
-          <h1 style={{ textAlign: 'center', maxWidth: '22ch', margin: '0 auto', fontSize: 'clamp(42px, 6.5vw, 80px)', lineHeight: 1.15 }}>
-            {headline.split('|').map((part, i) =>
-            i % 2 === 1 ?
-            <span key={i} className="italic-disp" style={{ color: 'var(--accent)' }}>{renderHeadlinePart(part)}</span> :
-            <span key={i}>{renderHeadlinePart(part)}</span>
-            )}
+          <h1 className="hero-h1">
+            We build your funnel, run your ads, and <span className="hl-roi">guarantee the&nbsp;ROI.<svg viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C30 2, 60 2, 118 4.5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round"/></svg></span>
           </h1>
         </Reveal>
 
-        <Reveal delay={120} style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(16px, 1.9vw, 26px)' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 9,
-            padding: '9px 18px', borderRadius: 999,
-            border: '1px solid rgba(42,111,219,0.30)',
-            background: 'rgba(42,111,219,0.07)',
-            color: 'var(--accent)', textAlign: 'center',
-            fontSize: 'clamp(13.5px, 1.2vw, 15.5px)', fontWeight: 500, letterSpacing: '-0.005em'
-          }}>
-            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
-              <path d="M9 1.5 L15 4 V8.5 C15 12.5 12.4 15 9 16.5 C5.6 15 3 12.5 3 8.5 V4 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-              <path d="M6.4 9 L8.2 10.8 L11.6 7.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Guaranteed 3:1 ROI or You Pay Nothing
+        <Reveal delay={140} style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(20px, 2.4vw, 28px)' }}>
+          <span className="hero-guarantee">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" strokeWidth="1.4"/><path d="M2 6.5 H14" stroke="currentColor" strokeWidth="1.4"/><path d="M5.5 1.5 V4 M10.5 1.5 V4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/><path d="M5.5 10 L7.2 11.7 L10.5 8.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            Get a calendar full of calls with qualified prospects every single week
           </span>
         </Reveal>
 
-        <Reveal delay={160}>
-          <p style={{
-            textAlign: 'center', maxWidth: 660, margin: '32px auto 0',
-            fontSize: 'clamp(16px, 1.4vw, 19px)', color: 'var(--ink-2)', lineHeight: 1.55
-          }}>We&rsquo;ll analyze your business, pick and build one of the three funnels we specialize in, then create and run the ads that fill your calendar with qualified, ready-to-buy calls every single week. You close the calls. We handle everything else.
+        <Reveal delay={200}>
+          <p className="hero-sub">We&rsquo;ll analyze your business, pick and build one of the three funnels we specialize in, then create and run the ads that fill your calendar with qualified, ready-to-buy calls every single week. You close the calls. We handle everything else.
           </p>
         </Reveal>
 
-        <Reveal delay={240} style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
+        <Reveal delay={260} className="hero-ctas">
           <a href="#cta" className="btn btn-primary">Book a strategy call <Arrow /></a>
           <a href="#cases" className="btn btn-ghost">See client results</a>
         </Reveal>
 
-        <Reveal delay={320} style={{ display: 'flex', justifyContent: 'center', gap: 24, marginTop: 28, flexWrap: 'wrap', color: 'var(--ink-3)', fontSize: 13 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> VSL, webinar &amp; low-ticket funnels</span>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> Ads + creative managed in-house</span>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--accent)' }}><Check size={12} /></span> Built for $15k+ client LTV</span>
+        <Reveal delay={320} className="hero-trust">
+          <span><span style={{ color: 'var(--accent)', display: 'inline-flex' }}><Check size={12} /></span> VSL, webinar &amp; low-ticket funnels</span>
+          <span><span style={{ color: 'var(--accent)', display: 'inline-flex' }}><Check size={12} /></span> Ads + creative managed in-house</span>
+          <span><span style={{ color: 'var(--accent)', display: 'inline-flex' }}><Check size={12} /></span> Built for $15k+ client LTV</span>
         </Reveal>
-
-        {/* VSL temporarily removed — re-enable by rendering <HeroVSL /> here. */}
       </div>
     </section>);
 

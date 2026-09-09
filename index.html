@@ -17,14 +17,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles-light.css" />
+<link rel="stylesheet" href="styles-vsl.css" />
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body data-density="regular">
 <div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
 <script type="text/babel" src="tweaks-panel.jsx"></script>
@@ -32,19 +33,16 @@
 <script type="text/babel" src="bg-texture.jsx"></script>
 <script type="text/babel" src="sections-top-light.jsx"></script>
 <script type="text/babel" src="sections-bottom-light.jsx"></script>
+<script type="text/babel" src="vsl-sections.jsx"></script>
 
 <script type="text/babel" data-presets="react">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#2A6FDB",
-  "headline": "We build |extremely profitable| B2B paid ads acquisition systems",
-  "density": "regular",
-  "showMarquee": true,
-  "showFounder": true
+  "density": "regular"
 }/*EDITMODE-END*/;
 
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
   React.useEffect(() => {
     document.documentElement.style.setProperty('--accent', t.accent);
     document.documentElement.style.setProperty('--accent-2', t.accent);
@@ -53,66 +51,39 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <Hero headline={t.headline} />
+      <VslNav />
+      <VslHero />
       <ClientLogos />
-      {t.showMarquee && <MarqueeRow />}
-      <FunnelTypes />
-      <Services />
-      <Process />
-      <Cases />
-      <FunnelShowcase />
-      <StaticAds />
-      <Fit />
-      {t.showFounder && <Founder />}
-      <FAQ />
-      <FinalCTA />
-      <Footer />
+      <WhyVsl />
+      <VslProcess />
+      <WhatWeDo />
+      <Packages />
+      <YouTubeVideos />
+      <FunnelShowcase num="06" title={<>Examples of funnels <span className="italic-disp" style={{ color: 'var(--accent)' }}>we've built.</span></>} />
+      <StaticAds num="07" />
+      <Cases num="08" kicker="REAL RESULTS" title={<>Case <span className="italic-disp" style={{ color: 'var(--accent)' }}>studies.</span></>} />
+      <VslFAQ />
+      <Footer blurb="Done-for-you VSL advertising systems for agencies, coaches, consultants and B2B service businesses. Live in about 10 days, about 3 hours of your time, $30K in profit guaranteed or you don't pay." />
 
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Visual" />
-        <TweakColor label="Accent" value={t.accent} onChange={(v) => setTweak('accent', v)} />
-        <TweakRadio label="Density" value={t.density}
-                    options={['tight', 'regular', 'airy']}
-                    onChange={(v) => setTweak('density', v)} />
-
-        <TweakSection label="Hero copy" />
-        <TweakSelect label="Hook" value={t.headline}
-                     options={[
-                       { value: "We build |extremely profitable| B2B paid ads acquisition systems", label: 'Acquisition' },
-                       { value: 'Three funnels. Our ads. A calendar full of |qualified calls.|', label: 'Three funnels' },
-                       { value: 'We build your funnel and run the ads, |so qualified calls book themselves.|', label: 'Build + run' },
-                       { value: 'Turn ad spend into |qualified, booked calls.|', label: 'Booked calls' },
-                     ]}
-                     onChange={(v) => setTweak('headline', v)} />
-        <TweakText label="Headline" value={t.headline}
-                   placeholder="Use | | to wrap the italic accent"
-                   onChange={(v) => setTweak('headline', v)} />
-
-        <TweakSection label="Sections" />
-        <TweakToggle label="Show marquee"  value={t.showMarquee} onChange={(v) => setTweak('showMarquee', v)} />
-        <TweakToggle label="Show founder"  value={t.showFounder} onChange={(v) => setTweak('showFounder', v)} />
-
-        <TweakSection label="Accent presets" />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 6 }}>
-          {[
-            ['#2A6FDB', 'Blue'],
-            ['#179A52', 'Green'],
-            ['#6D4ADB', 'Violet'],
-            ['#0E8C8C', 'Teal'],
-            ['#D9622B', 'Orange'],
-          ].map(([c]) => (
-            <button key={c} onClick={() => setTweak('accent', c)}
-              style={{ height: 22, borderRadius: 6, border: '.5px solid rgba(0,0,0,.12)', background: c, cursor: 'pointer' }}
-              aria-label={c} />
-          ))}
-        </div>
-      </TweaksPanel>
     </>
   );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script type="text/javascript">
+(function poll(n){
+  if(!document.getElementById('vidalytics_embed_4C82wuZl8_lIneoQ')){ if(n<200) return setTimeout(function(){poll(n+1)},100); return; }
+  (function (v, i, d, a, l, y, t, c, s) {
+    y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+    if (!vsl){vsl=function(u,cb){
+        if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+        if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+        i.getElementsByTagName("head")[0].appendChild(s);
+    };}
+    vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+  })(window, document, 'Vidalytics', 'vidalytics_embed_4C82wuZl8_lIneoQ', 'https://fast.vidalytics.com/embeds/a2MBXTxt/4C82wuZl8_lIneoQ/');
+})(0);
 </script>
 </body>
 </html>
