@@ -301,6 +301,9 @@ function WhatWeDo() {
             </div>
           </Reveal>
         </div>
+        <Reveal delay={160} style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(32px, 4vw, 48px)' }}>
+          <a href="#book" className="btn btn-primary">Book a call <Arrow /></a>
+        </Reveal>
       </div>
     </section>
   );
