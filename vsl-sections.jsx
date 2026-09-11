@@ -55,7 +55,7 @@ function VslHero() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal><div style={{ textAlign: 'center', marginBottom: 'clamp(18px, 2.2vw, 26px)' }}><span className="eyebrow"><span className="dot" />FOR AGENCIES, COACHES, CONSULTANTS &amp; B2B SERVICE BUSINESSES</span></div></Reveal>
         <Reveal delay={80}>
-          <h1 className="v-h1"><b>We'll Build You a VSL Funnel &amp; Guarantee At Least $30,000 In Profit. <span className="v-uline">Or You Don't&nbsp;Pay.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path className="u-a" pathLength="1" d="M4 8.4 C 40 4.1, 76 3.3, 112 5.1 S 172 8.3, 196 4.5" /><path className="u-b" pathLength="1" d="M11 11.3 C 54 8.1, 106 7.5, 152 9.1 S 187 10.7, 194 9.3" /></svg></span></b></h1>
+          <h1 className="v-h1"><b>We'll Build You a VSL Funnel &amp; Guarantee At Least $30,000 In Profit. Or You Don't&nbsp;Pay.</b></h1>
         </Reveal>
         <Reveal delay={160}><p className="v-sub">And the best part? It takes about <strong>3 hours of your time</strong> in total. Watch the video to see exactly how it works.</p></Reveal>
         <Reveal delay={240}><VslVideo /></Reveal>

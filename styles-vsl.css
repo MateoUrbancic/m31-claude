@@ -227,15 +227,3 @@
 
 .v-pkg-list li.is-base b{font-weight:600;color:var(--ink)}
 .v-pkg-list li.is-plus svg{color:var(--accent)}
-
-/* Hand-drawn headline underline (draws on when the hero reveals) --- */
-.v-uline{position:relative;display:inline-block;white-space:nowrap}
-.v-uline>svg{position:absolute;left:-1.5%;width:103%;max-width:none;bottom:-0.17em;height:0.24em;color:var(--accent);overflow:visible;pointer-events:none}
-.v-uline path{fill:none;stroke:currentColor;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
-.v-uline .u-a{stroke-width:3.6}
-.v-uline .u-b{stroke-width:2;opacity:.42}
-.reveal.in .v-uline .u-a{animation:vUline .85s cubic-bezier(.65,0,.35,1) .35s forwards}
-.reveal.in .v-uline .u-b{animation:vUline .8s cubic-bezier(.65,0,.35,1) .62s forwards}
-@keyframes vUline{to{stroke-dashoffset:0}}
-@media (max-width:600px){.v-uline .u-a{stroke-width:4.4}.v-uline .u-b{stroke-width:2.6}}
-@media (prefers-reduced-motion:reduce){.v-uline path{stroke-dashoffset:0}.reveal.in .v-uline path{animation:none}}
