@@ -846,7 +846,7 @@ function Footer({ blurb }) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32 }} className="foot-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <img src="logo.svg" alt="m31" style={{ height: 30, width: 'auto' }} />
+              <img src="logo.png" alt="Marketing31" width="1341" height="623" style={{ height: 30, width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6, maxWidth: '40ch' }}>
               {blurb || 'Done-for-you VSL, webinar, and low-ticket funnels, built and powered by ads we run in-house. For businesses with a client worth $15k or more.'}

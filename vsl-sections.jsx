@@ -7,7 +7,7 @@ const Ital = ({ children }) => <span className="italic-disp" style={{ color: 'va
 function VslNav() {
   return (
     <nav className="nav"><div className="nav-inner">
-      <a href="#top" className="nav-logo"><img src="logo.svg" alt="m31" className="nav-logo-img" /></a>
+      <a href="#top" className="nav-logo"><img src="logo.png" alt="Marketing31" width="1341" height="623" className="nav-logo-img" /></a>
       <div className="nav-links">
         <a href="#why">How it works</a><a href="#process">Process</a><a href="#cases">Results</a><a href="#packages">Packages</a><a href="#faq">FAQ</a>
       </div>

@@ -8,8 +8,7 @@ function Nav({ accent }) {
     <nav className="nav">
       <div className="nav-inner">
         <a href="#top" className="nav-logo">
-          <span className="mark">M</span>
-          <span>Marketing<span style={{ color: 'var(--accent)' }}>31</span></span>
+          <img src="logo.png" alt="Marketing31" width="1341" height="623" className="nav-logo-img" />
         </a>
         <div className="nav-links">
           <a href="#services">What We Do</a>
