@@ -109,7 +109,7 @@ function Grind() {
 
 function WhyVsl() {
   const stages = [
-    { n: '01', tag: 'THE AD', t: 'Cold traffic sees your ad', d: 'Meta ads put your offer in front of the exact people you want as clients. No content grind, no cold outreach.', mock: 'ad' },
+    { n: '01', tag: 'THE AD', t: 'Cold traffic clicks your ad', d: 'Meta ads put your offer in front of the exact people you want as clients. No content grind, no cold outreach.', mock: 'ad' },
     { n: '02', tag: 'THE VSL PAGE', t: 'They watch a 5 to 10 minute video', d: 'One page, one video, one direct offer: here\u2019s what we do for you, here\u2019s who it\u2019s for, here\u2019s roughly what it costs.', mock: 'vsl' },
     { n: '03', tag: 'THE APPLICATION', t: 'They apply to book a call', d: 'A short qualification form only lets the right people through. Everyone else is filtered out before they touch your calendar.', mock: 'form' },
     { n: '04', tag: 'THE CALL', t: 'A call lands on your calendar', d: 'Pre-sold. They already know what you do, what you charge, and they want it. Reminders keep them excited to show up.', mock: 'cal', hot: true },
