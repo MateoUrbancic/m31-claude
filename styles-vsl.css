@@ -41,9 +41,10 @@
 /* 02 How it works */
 .v-stages{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
 .v-stage-wrap{display:flex}
-.v-stage{width:100%;display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:20px;background:#fff;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.v-stage{position:relative;width:100%;display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:20px;background:#fff;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
 .v-stage:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(11,13,16,0.10)}
 .v-stage.is-hot{border-color:rgba(42,111,219,0.45);box-shadow:0 20px 56px rgba(42,111,219,0.14)}
+.v-stage-num{position:absolute;top:14px;left:14px;z-index:2;width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;letter-spacing:0;color:#fff;background:var(--accent);box-shadow:0 4px 14px rgba(42,111,219,.35)}
 .v-stage-mock{padding:18px 18px 0;background:linear-gradient(180deg,var(--bg-2),#fff);border-bottom:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;height:190px;overflow:hidden}
 .v-stage.is-hot .v-stage-mock{background:linear-gradient(180deg,rgba(42,111,219,0.10),#fff)}
 .v-stage-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}

@@ -161,9 +161,10 @@ function WhyVsl() {
             <React.Fragment key={i}>
               <Reveal delay={i * 90} className="v-stage-wrap">
                 <div className={'v-stage' + (s.hot ? ' is-hot' : '')}>
+                  <span className="v-stage-num" aria-hidden="true">{s.n}</span>
                   <div className="v-stage-mock"><Mock kind={s.mock} /></div>
                   <div className="v-stage-body">
-                    <div className="v-stage-tag"><span>{s.n}</span>{s.tag}</div>
+                    <div className="v-stage-tag">{s.tag}</div>
                     <h3>{s.t}</h3>
                     <p>{s.d}</p>
                   </div>
