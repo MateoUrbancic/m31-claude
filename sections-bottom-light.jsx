@@ -846,8 +846,7 @@ function Footer({ blurb }) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 32 }} className="foot-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 8, background: 'var(--accent)', color: '#051020', fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>M</span>
-              <span style={{ fontWeight: 600, fontSize: 18, letterSpacing: '-0.02em' }}>Marketing<span style={{ color: 'var(--accent)' }}>31</span></span>
+              <img src="logo.svg" alt="m31" style={{ height: 30, width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6, maxWidth: '40ch' }}>
               {blurb || 'Done-for-you VSL, webinar, and low-ticket funnels, built and powered by ads we run in-house. For businesses with a client worth $15k or more.'}

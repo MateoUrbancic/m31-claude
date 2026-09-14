@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198.4 87" width="198.4" height="87" role="img" aria-label="m31">
+  <path transform="translate(0,14.7)" fill="#1F2124"
+        d="M0,62 L0,29.6 A29.6,29.6 0 0 1 50,8.15 A29.6,29.6 0 0 1 100,29.6 L100,62
+           L81.6,62 L81.6,29.6 A11.2,11.2 0 0 0 59.2,29.6 L59.2,62
+           L40.8,62 L40.8,29.6 A11.2,11.2 0 0 0 18.4,29.6 L18.4,62 Z"/>
+  <rect x="104.4" y="0" width="94" height="87" rx="19" fill="#2A6FDB"/>
+  <text x="151.4" y="45.5" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central"
+        font-family="'Inter Tight','Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="58" font-weight="700" letter-spacing="-2">31</text>
+</svg>
