@@ -78,7 +78,11 @@ h1 .l3{display:block;margin-top:8px;font-size:clamp(36px,4.4vw,50px);line-height
 .logos .track div{flex:0 0 auto;height:48px;margin-right:40px;display:flex;align-items:center}
 .logos img{width:auto;display:block;opacity:.55}
 .funnel{position:absolute;left:0;bottom:-1px;width:100%;height:124px;display:block;overflow:visible}
-@media (min-width:700px){.funnel .node,.funnel .travel{display:none}}
+@media (min-width:700px){.funnel .travel{display:none}}
+.nodes{position:absolute;left:0;right:0;bottom:-1px;height:124px;pointer-events:none}
+.nodes .node{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#FFFFFF;border:2px solid #0457FC;box-sizing:border-box}
+.nodes .node::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#0457FC}
+.nodes .node b{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);font-size:8.5px;font-weight:500;letter-spacing:.1em;color:rgba(11,13,16,.6);white-space:nowrap}
 .funnel-grid{position:absolute;left:0;right:0;bottom:-1px;height:124px;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:26px 26px;background-position:0 100%;-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20390%20124%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M-10%20104%20C%2060%20100%2C%2090%2070%2C%20130%2070%20C%20175%2070%2C%20200%2052%2C%20250%2046%20C%20300%2040%2C%20330%2026%2C%20400%2020%20L400%20125%20L-10%20125%20Z%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20390%20124%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M-10%20104%20C%2060%20100%2C%2090%2070%2C%20130%2070%20C%20175%2070%2C%20200%2052%2C%20250%2046%20C%20300%2040%2C%20330%2026%2C%20400%2020%20L400%20125%20L-10%20125%20Z%22/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%}
 
 /* booking */
@@ -154,13 +158,15 @@ footer span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spaci
   <svg aria-hidden="true" class="funnel" viewBox="0 0 390 124" preserveAspectRatio="none">
     <path d="M-10 104 C 60 100, 90 70, 130 70 C 175 70, 200 52, 250 46 C 300 40, 330 26, 400 20 L400 125 L-10 125 Z" fill="#0B0D10"/>
     <path d="M-10 104 C 60 100, 90 70, 130 70 C 175 70, 200 52, 250 46 C 300 40, 330 26, 400 20" transform="translate(0,-9)" fill="none" stroke="#0457FC" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="3 5" vector-effect="non-scaling-stroke"/>
-    <path class="travel" d="M-10 104 C 60 100, 90 70, 130 70 C 175 70, 200 52, 250 46 C 300 40, 330 26, 400 20" transform="translate(0,-9)" fill="none" stroke="#0457FC" stroke-width="3" stroke-linecap="round"/>
-    <g class="node"><circle cx="48" cy="86" r="7" fill="#FFFFFF" stroke="#0457FC" stroke-width="2"/><circle cx="48" cy="86" r="2.6" fill="#0457FC"/><text x="48" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1" fill="#0B0D10" fill-opacity="0.6">AD</text></g>
-    <g class="node"><circle cx="150" cy="60" r="7" fill="#FFFFFF" stroke="#0457FC" stroke-width="2"/><circle cx="150" cy="60" r="2.6" fill="#0457FC"/><text x="150" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1" fill="#0B0D10" fill-opacity="0.6">VSL</text></g>
-    <g class="node"><circle cx="250" cy="37" r="7" fill="#FFFFFF" stroke="#0457FC" stroke-width="2"/><circle cx="250" cy="37" r="2.6" fill="#0457FC"/><text x="250" y="23" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1" fill="#0B0D10" fill-opacity="0.6">APPLY</text></g>
-    <g class="node"><circle cx="345" cy="20" r="7" fill="#FFFFFF" stroke="#0457FC" stroke-width="2"/><circle cx="345" cy="20" r="2.6" fill="#0457FC"/><text x="345" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1" fill="#0B0D10" fill-opacity="0.6">CALL</text></g>
+    <path class="travel" d="M-10 104 C 60 100, 90 70, 130 70 C 175 70, 200 52, 250 46 C 300 40, 330 26, 400 20" transform="translate(0,-9)" fill="none" stroke="#0457FC" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
   </svg>
   <div aria-hidden="true" class="funnel-grid"></div>
+  <div aria-hidden="true" class="nodes">
+    <span class="node" style="left:12.31%;top:86px"><b class="mono">Ad</b></span>
+    <span class="node" style="left:38.46%;top:60px"><b class="mono">VSL</b></span>
+    <span class="node" style="left:64.10%;top:37px"><b class="mono">Apply</b></span>
+    <span class="node" style="left:88.46%;top:20px"><b class="mono">Call</b></span>
+  </div>
 </section>
 
 <section id="book" class="book">
