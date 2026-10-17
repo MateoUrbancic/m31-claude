@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xmu0f1wbrr");
+</script>
+<title>Marketing31</title>
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles-light.css" />
+<link rel="stylesheet" href="styles-vsl.css" />
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</head>
+<body data-density="regular">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="bg-texture.jsx"></script>
+<script type="text/babel" src="sections-top-light.jsx"></script>
+<script type="text/babel" src="sections-bottom-light.jsx"></script>
+<script type="text/babel" src="vsl-sections.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#2A6FDB",
+  "density": "regular"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--accent', t.accent);
+    document.documentElement.style.setProperty('--accent-2', t.accent);
+    document.body.dataset.density = t.density;
+  }, [t.accent, t.density]);
+
+  return (
+    <>
+      <VslNav />
+      <VslHero />
+      <ClientLogos />
+      <WhyVsl />
+      <VslProcess />
+      <WhatWeDo />
+      <Packages />
+      <YouTubeVideos />
+      <FunnelShowcase num="06" title={<>Examples of funnels <span className="italic-disp" style={{ color: 'var(--accent)' }}>we've built.</span></>} />
+      <StaticAds num="07" />
+      <Cases num="08" kicker="REAL RESULTS" title={<>Case <span className="italic-disp" style={{ color: 'var(--accent)' }}>studies.</span></>} />
+      <VslFAQ />
+      <Footer blurb="Done-for-you VSL advertising systems for agencies, coaches, consultants and B2B service businesses. Live in about 10 days, about 3 hours of your time, $30K in profit guaranteed or you don't pay." />
+
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script type="text/javascript">
+(function poll(n){
+  if(!document.getElementById('vidalytics_embed_4C82wuZl8_lIneoQ')){ if(n<200) return setTimeout(function(){poll(n+1)},100); return; }
+  (function (v, i, d, a, l, y, t, c, s) {
+    y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+    if (!vsl){vsl=function(u,cb){
+        if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+        if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+        i.getElementsByTagName("head")[0].appendChild(s);
+    };}
+    vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+  })(window, document, 'Vidalytics', 'vidalytics_embed_4C82wuZl8_lIneoQ', 'https://fast.vidalytics.com/embeds/a2MBXTxt/4C82wuZl8_lIneoQ/');
+})(0);
+</script>
+</body>
+</html>
