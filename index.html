@@ -93,7 +93,7 @@ h1 .l3{display:block;margin-top:8px;font-size:clamp(36px,4.4vw,50px);line-height
 .mateo{margin-top:18px;display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
 .mateo img{width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:50% 25%;display:block}
 .mateo span{font-size:13px;font-weight:500;color:#D7DBE3}
-.cal{position:relative;margin-top:26px;height:760px;background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(11,13,16,.22),0 8px 18px rgba(11,13,16,.1)}
+.cal{position:relative;margin-top:26px;height:660px;transition:height .25s ease;background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(11,13,16,.22),0 8px 18px rgba(11,13,16,.1)}
 .cal iframe{width:100%;height:100%;border:0;display:block}
 .book-foot{position:relative;margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
 .book-foot p{margin:0;font-size:15px;font-weight:700;color:#FFFFFF}
@@ -177,7 +177,7 @@ footer span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spaci
     </div>
 
     <div class="cal">
-      <iframe src="https://calendly.com/mateo-m31/quick-call?embed_type=Inline&hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0457fc" title="Book a call with Mateo" loading="lazy"></iframe>
+      <iframe id="cal-frame" src="https://calendly.com/mateo-m31/quick-call?embed_domain=marketing31.com&embed_type=Inline&hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0457fc" title="Book a call with Mateo" loading="lazy"></iframe>
     </div>
 
     <div class="book-foot">
@@ -200,6 +200,12 @@ footer span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spaci
 </footer>
 
 <script>
+// size the Calendly card to its content so there's no empty space under it
+window.addEventListener('message',function(e){
+  if(e.origin!=='https://calendly.com'||!e.data||e.data.event!=='calendly.page_height')return;
+  var h=parseInt(e.data.payload&&e.data.payload.height,10);
+  if(h>0)document.querySelector('.cal').style.height=h+'px';
+});
 // duplicate the logo row so the marquee loops seamlessly
 (function(){var t=document.getElementById('logo-track');t.innerHTML+=t.innerHTML;Array.prototype.slice.call(t.children,t.children.length/2).forEach(function(d){d.setAttribute('aria-hidden','true')});})();
 </script>
